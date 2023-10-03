@@ -5,7 +5,11 @@ O modelo Entidade Relacionamento é um modelo conceitual que repersenta de forma
 
 ## 1 - Entidades
 
-As entidades presentes no diagrama são
+As entidades presentes no diagrama são:
+
+ - *Personagem*
+ - *Player Character*
+ - *Non Player Character*
 
 ## 2 - Atributos
 
