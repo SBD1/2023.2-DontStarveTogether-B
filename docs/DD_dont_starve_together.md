@@ -182,4 +182,4 @@ O objetivo deste documento é descrever o dicionário de dados do banco de dados
 | Versão | Data | Descrição | Autor |
 | :-----: | :------: | ------- | -------- |
 | 1.0 | 02/10/2023 | Criação do Documento | [Levi Queiroz](https://github.com/LeviQ27) |
-| 1.1 | 02/10/2023 | Criação das Tabelas | [Levi Queiroz](https://github.com/LeviQ27) |
+| 1.1 | 02/10/2023 | Criação das Tabelas | [Levi Queiroz](https://github.com/LeviQ27) [Luis Bruno](https://github.com/lbrunofidelis) [Andre Goretti](https://github.com/AGoretti) |

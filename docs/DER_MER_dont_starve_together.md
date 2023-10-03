@@ -21,4 +21,4 @@ As entidades presentes no diagrama são:
 
 | Versão | Data | Descrição | Autor |
 | :-----: | :------: | ------- | -------- |
-| 1.0 | 02/10/2023 | Criação do Documento | [Levi Queiroz](https://github.com/LeviQ27) |
+| 1.0 | 02/10/2023 | Criação do Documento | [Levi Queiroz](https://github.com/LeviQ27) [Luis Bruno](https://github.com/lbrunofidelis) [Andre Goretti](https://github.com/AGoretti) |

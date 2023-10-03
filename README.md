@@ -15,4 +15,5 @@ Este repositório contém informações relacionadas ao projeto de criação des
 - [Levi Queiroz](https://github.com/LeviQ27)
 - [Luis Bruno](https://github.com/lbrunofidelis)
 - [André Goretti](https://github.com/AGoretti)
+- Yago Amin
 
