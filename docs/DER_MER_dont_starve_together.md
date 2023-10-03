@@ -2,6 +2,9 @@
 
 O modelo Entidade Relacionamento é um modelo conceitual que repersenta de forma abstrata a estrutura que o banco de dados da aplicação terá, contendo entidades, atributos e relacionamentos.
 
+<div align="center">
+  <img src="../assets/diagrama-entidade.png" aly="Diagrama Entidade" style="width: 700px">
+</div>
 
 ## 1 - Entidades
 
