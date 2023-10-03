@@ -75,8 +75,12 @@ O objetivo deste documento é descrever o dicionário de dados do banco de dados
 | Nome | Descrição | Tipo de Dado | Tamanho | Restrições de Domínio |
 | :------: | :------: | :------: | :------: | :------: |
 | id | Identificador do personagem | int |  | PK |
-| nome | Nome do mundo | int |  | Not Null |
-| tamanho | Tamanho do mundo (small, medium, large (default) e huge) |  || Not Null |
+| vida | Indica a quantidade de pontos de vida atual do NPC | int |  | Not Null |
+| eHostil | Se o atributo hostil for verdadeiro, o NPC ataca qualquer PC que avistar | boolean || Not Null |
+| eNeutro | Se o atributo neutro for verdadeiro, o NPC só ataca o PC quando for atacado | boolean || Not Null |
+| ePassivo | Se o atributo passivo for verdadeiro, o NPC não ataca o PC em nenhuma ocasião | boolean || Not Null |
+| eBoss | Indica que o NPC é um boss | boolean || Not Null |
+| dialogo | Atributo que faz o diálogo do NPC, caso exista | varchar | 300 | Not Null |
 
 ## Tabela Mundo
 
