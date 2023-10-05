@@ -82,103 +82,115 @@ O objetivo deste documento é descrever o dicionário de dados do banco de dados
 | eBoss | Indica que o NPC é um boss | boolean || Not Null |
 | dialogo | Atributo que faz o diálogo do NPC, caso exista | varchar | 300 | Not Null |
 
-## Tabela Mundo
+## Tabela Instancia
 
-| Tabela | Descrição |
-|:----:|:-----:|
-| Mundo | Armazenará os dados do mundo |
-
-#### Campos
-
-| Nome | Descrição | Tipo de Dado | Tamanho | Restrições de Domínio |
-| :------: | :------: | :------: | :------: | :------: |
-| id | Identificador do mundo | int |  | PK |
-| nome | Nome do mundo | varchar | 50 | Not Null |
-| tamanho | Tamanho do mundo (small, medium, large (default) e huge) |  || Not Null |
-
-## Tabela Mundo
-
-| Tabela | Descrição |
-|:----:|:-----:|
-| Mundo | Armazenará os dados do mundo |
+| Tabela | Descrição | Observações | 
+|:----:|:-----:|:-----:|
+| Instancia | Armazenará os dados das instâncias dos NPC | Possui chave estrangeira para NPC |
 
 #### Campos
 
 | Nome | Descrição | Tipo de Dado | Tamanho | Restrições de Domínio |
 | :------: | :------: | :------: | :------: | :------: |
-| id | Identificador do mundo | int |  | PK |
-| nome | Nome do mundo | varchar | 50 | Not Null |
-| tamanho | Tamanho do mundo (small, medium, large (default) e huge) |  || Not Null |
+| id | Identificador da instância | int | ------ | PK |
+| idNPC | Identificador do NPC associado | int | ------ | FK |
+| nome | Nome da instância | Varchar | 50 | Not Null |
+| descricao | Descrição da instância | Varchar | 200 | Not Null |
+| localizacao | Localização da instância | Varchar | 200 | Not Null |
 
-## Tabela Mundo
+
+## Tabela Equipamento
 
 | Tabela | Descrição |
 |:----:|:-----:|
-| Mundo | Armazenará os dados do mundo |
+| Equipamento | Armazenará os dados de uma peça de equipamento |
 
 #### Campos
 
 | Nome | Descrição | Tipo de Dado | Tamanho | Restrições de Domínio |
 | :------: | :------: | :------: | :------: | :------: |
-| id | Identificador do mundo | int |  | PK |
-| nome | Nome do mundo | varchar | 50 | Not Null |
-| tamanho | Tamanho do mundo (small, medium, large (default) e huge) |  || Not Null |
+| id | Identificador do equipamento | int | ------ | PK |
+| nome | Nome do equipamento | varchar | 50 | Not Null |
+| descricao | Descrição do equipamento | varchar | 200 | Not Null |
+| parteCorpo | Parte do corpo na qual o equipamento é equipado (Cabeça, Corpo e Mão) | varchar | 50 | Not Null |
+| durabilidade | Quantidade de durabilidade do equipamento | float | ------ | Not Null |
+| protecao | Nível de proteção (em %) do equipamento| int | ------ | Not Null |
 
-## Tabela Mundo
 
-| Tabela | Descrição |
-|:----:|:-----:|
-| Mundo | Armazenará os dados do mundo |
+## Tabela EquipamentoPersonagem
 
-#### Campos
-
-| Nome | Descrição | Tipo de Dado | Tamanho | Restrições de Domínio |
-| :------: | :------: | :------: | :------: | :------: |
-| id | Identificador do mundo | int |  | PK |
-| nome | Nome do mundo | varchar | 50 | Not Null |
-| tamanho | Tamanho do mundo (small, medium, large (default) e huge) |  || Not Null |
-
-## Tabela Mundo
-
-| Tabela | Descrição |
-|:----:|:-----:|
-| Mundo | Armazenará os dados do mundo |
+| Tabela | Descrição | Observações |
+|:----:|:-----:|:-----:|
+| EquipamentoPersonagem | Armazenará a relação de vparios equipamentos com vários personagens | Possui chave estrangeira para as tabelas PC e Equipamento |
 
 #### Campos
 
 | Nome | Descrição | Tipo de Dado | Tamanho | Restrições de Domínio |
 | :------: | :------: | :------: | :------: | :------: |
-| id | Identificador do mundo | int |  | PK |
-| nome | Nome do mundo | varchar | 50 | Not Null |
-| tamanho | Tamanho do mundo (small, medium, large (default) e huge) |  || Not Null |
+| id | Identificador do relação | int |  | PK |
+| idPersonagem | ID do personagem que possui o equipamento equipado | int | ------ | FK |
+| idEquipamento | ID do equipamento que está equipado | int | ------ | FK |
 
-## Tabela Mundo
+## Tabela Craft
 
-| Tabela | Descrição |
-|:----:|:-----:|
-| Mundo | Armazenará os dados do mundo |
-
-#### Campos
-
-| Nome | Descrição | Tipo de Dado | Tamanho | Restrições de Domínio |
-| :------: | :------: | :------: | :------: | :------: |
-| id | Identificador do mundo | int |  | PK |
-| nome | Nome do mundo | varchar | 50 | Not Null |
-| tamanho | Tamanho do mundo (small, medium, large (default) e huge) |  || Not Null |
-
-## Tabela Mundo
-
-| Tabela | Descrição |
-|:----:|:-----:|
-| Mundo | Armazenará os dados do mundo |
+| Tabela | Descrição | Observações |
+|:----:|:-----:|:-----:|
+| Craft | Armazenará os dados das receitas de craft | Possui chave estrangeira para as tabelas PC e Equipamento |
 
 #### Campos
 
 | Nome | Descrição | Tipo de Dado | Tamanho | Restrições de Domínio |
 | :------: | :------: | :------: | :------: | :------: |
-| id | Identificador do mundo | int |  | PK |
-| nome | Nome do mundo | varchar | 50 | Not Null |
-| tamanho | Tamanho do mundo (small, medium, large (default) e huge) |  || Not Null |
+| id | Identificador da receita de craft | int | ------- | PK |
+| idItem | Chave estrangeira para o item  | Int | ------ | FK |
+| idEstacaoCraft | Chave estrangeira para a estação de craft associada | int | ------ | FK |
+
+## Tabela EstacaoCraft
+
+| Tabela | Descrição |
+|:----:|:-----:|
+| EstacaoCraft | Armazenará das estações de craft no jogo |
+
+#### Campos
+
+| Nome | Descrição | Tipo de Dado | Tamanho | Restrições de Domínio |
+| :------: | :------: | :------: | :------: | :------: |
+| id | Identificador da estação de craft | int |  | PK |
+| nome | Nome da estação de craft | varchar | 50 | Not Null |
+| descricao | Descrição da estação de craft | varchar | 200 | Not Null |
+| localizacao | Localização da estação de craft | varchar | 50 | Not Null |
+
+## Tabela Habilidade
+
+| Tabela | Descrição |
+|:----:|:-----:|
+| Habilidade | Armazenará os dados das habilidades dos personagens |
+
+#### Campos
+
+| Nome | Descrição | Tipo de Dado | Tamanho | Restrições de Domínio |
+| :------: | :------: | :------: | :------: | :------: |
+| id | Identificador da habilidade | int |  | PK |
+| nome | Nome da habilidade | varchar | 50 | Not Null |
+| descricao | Descrição da estação de craft | varchar | 200 | Not Null |
+| eOfensiva | Habilidade ofensiva (Sim ou Não) | boolean | ------ | Not Null |
+| dano | Valor de dano da habilidade | int | ------ | ------ |
+| casting | Tempo de lançamento da habilidade | int | ------ | Not Null |
+| recursoGerado | Recurso gerado pela habilidade | varchar | 50 | ------ |
+## Tabela Item
+
+| Tabela | Descrição |
+|:----:|:-----:|
+| Item | Armazenará os dados dos itens no jogo |
+
+#### Campos
+
+| Nome | Descrição | Tipo de Dado | Tamanho | Restrições de Domínio |
+| :------: | :------: | :------: | :------: | :------: |
+| id | Identificador do item | int |  | PK |
+| nome | Nome do item | varchar | 50 | Not Null |
+| tipo | Tipo do item | varchar | 50 | Not Null |
+| quantidade | Quantidade de itens disponíveis | int | ------ | Not Null |
 
 
 # Histórico de Versão
