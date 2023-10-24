@@ -20,4 +20,4 @@
 | :-----: | :------: | ------- | -------- |
 | 1.0 | 02/10/2023 | Criação do Documento | [Levi Queiroz](https://github.com/LeviQ27) |
 | 1.1 | 02/10/2023 | Adiciona Mrel | [Levi Queiroz](https://github.com/LeviQ27) [Luis Bruno](https://github.com/lbrunofidelis) [Andre Goretti](https://github.com/AGoretti) |
-| 2.0 | 02/10/2023 | Cria versão 2 | [Luis Bruno](https://github.com/lbrunofidelis) |
+| 2.0 | 23/10/2023 | Cria versão 2 | [Luis Bruno](https://github.com/lbrunofidelis) |
