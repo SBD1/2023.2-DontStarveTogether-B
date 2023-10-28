@@ -11,6 +11,8 @@ INSERT INTO Usuario (nomeUsuario, nome, email, senha) VALUES ('lukeskywalker', '
 ('carlosroberto', 'Roberto Carlos', 'roberto@gmail.com', 'especialdenatal'),
 ('joaodasilva', 'João Silva', 'joao@gmail.com', 'senha123');
 
+SELECT * FROM Usuario;
+
 -- Personagem
 INSERT INTO Personagem (nome, descricao, vida) VALUES ('Wilson', 'Cientista', 150),
 ('Willow', 'Piromaniaca', 150),
@@ -22,11 +24,15 @@ INSERT INTO Personagem (nome, descricao, vida) VALUES ('Wilson', 'Cientista', 15
 ('Deerclops', 'O brabo Deerclops', 500),
 ('Abigail', 'A irmã gêmea da wendy =[', 500);
 
+SELECT * FROM Personagem;
+
 -- PersonagemJogavel
 INSERT INTO PersonagemJogavel (idComidaFavorita, idPersonagem, sanidade, fome) VALUES (1, 1, 100, 150),
 (2, 2, 80, 140),
 (3, 3, 120, 160),
 (4, 4, 90, 130);
+
+SELECT * FROM PersonagemJogavel;
 
 -- PersonagemUsuario
 INSERT INTO PersonagemUsuario (nomeUsuario, idPersonagemJogavel) VALUES ('fulano123', 1),
@@ -38,13 +44,17 @@ INSERT INTO PersonagemUsuario (nomeUsuario, idPersonagemJogavel) VALUES ('fulano
 ('joaodasilva', 3),
 ('joaodasilva', 4);
 
+SELECT * FROM PersonagemUsuario;
+
 -- Npc
 INSERT INTO Npc (idPersonagem, tipoNpc, eBoss) VALUES
 (5, 'N', false),
 (6, 'P', false),
 (7, 'H', false),
 (8, 'H', true),
-(9, 'P', false)
+(9, 'P', false);
+
+SELECT * FROM Npc;
 
 -- Dialogo
 INSERT INTO Dialogo (textoFala, dialogoVinculo) VALUES
@@ -62,6 +72,8 @@ INSERT INTO Dialogo (textoFala, dialogoVinculo) VALUES
 ('Medo..', NULL),
 ('Ele está perto!!', NULL),
 ('Fuja do Deerclops!', NULL);
+
+SELECT * FROM Dialogo;
 
 -- DialogoPersonagem
 INSERT INTO DialogoPersonagem (idPersonagem, idDialogo)
@@ -82,6 +94,8 @@ VALUES (1, 1),
 (3, 4),
 (8, 7);
 
+SELECT * FROM DialogoPersonagem;
+
 -- InstanciaNpc
 INSERT INTO InstanciaNpc (idNpc, x, y, z, vidaAtual) VALUES
 (1, 10, 20, 30, 90),
@@ -99,26 +113,26 @@ INSERT INTO InstanciaNpc (idNpc, x, y, z, vidaAtual) VALUES
 (3, 72, 88, 97, 71),
 (3, 71, 82, 99, 74),
 (3, 74, 81, 92, 73),
-(4, 10, 110, 120, 1350), -- Criar check para que o HPAtual não seja maior que o Hp total
-(7, 13, 140, 150, 40),
-(7, 13, 145, 155, 50);
+(4, 10, 110, 120, 1350); -- Criar check para que o HPAtual não seja maior que o Hp total
+
+SELECT * FROM InstanciaNpc
 
 COMMIT;
 
 -- ROLLBACK
 
--- Drops/Truncates
-TRUNCATE TABLE Alianca CASCADE;
-TRUNCATE TABLE InstanciaPC CASCADE;
-TRUNCATE TABLE InstanciaNpc CASCADE;
-TRUNCATE TABLE Dialogo CASCADE;
-TRUNCATE TABLE DialogoPersonagem CASCADE;
-TRUNCATE TABLE Npc CASCADE;
-TRUNCATE TABLE PersonagemJogavel CASCADE;
-TRUNCATE TABLE PersonagemUsuario CASCADE;
-TRUNCATE TABLE Personagem CASCADE;
-TRUNCATE TABLE Usuario CASCADE;
+-- Alters - p/ resetar os ids
+ALTER SEQUENCE Personagem_id_seq RESTART WITH 1;
+ALTER SEQUENCE PersonagemUsuario_id_seq RESTART WITH 1;
+ALTER SEQUENCE PersonagemJogavel_id_seq RESTART WITH 1;
+ALTER SEQUENCE Npc_id_seq RESTART WITH 1;
+ALTER SEQUENCE DialogoPersonagem_id_seq RESTART WITH 1;
+ALTER SEQUENCE Dialogo_id_seq RESTART WITH 1;
+ALTER SEQUENCE InstanciaNpc_id_seq RESTART WITH 1;
+ALTER SEQUENCE InstanciaPC_id_seq RESTART WITH 1;
+ALTER SEQUENCE Alianca_id_seq RESTART WITH 1;
 
+-- Drops
 DROP TABLE IF EXISTS Alianca CASCADE;
 DROP TABLE IF EXISTS InstanciaPC CASCADE;
 DROP TABLE IF EXISTS InstanciaNpc CASCADE;

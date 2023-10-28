@@ -68,9 +68,9 @@ CREATE TABLE DialogoPersonagem (
 CREATE TABLE InstanciaNpc (
     id SERIAL PRIMARY KEY,
     idNpc INTEGER NOT NULL,
-    x DECIMAL(6, 6) NOT NULL,
-    y DECIMAL(6, 6) NOT NULL,
-    z DECIMAL(6, 6) NOT NULL,
+    x INTEGER NOT NULL,
+    y INTEGER NOT NULL,
+    z INTEGER NOT NULL,
     vidaAtual SMALLINT NOT NULL,
     FOREIGN KEY (idNpc) REFERENCES Npc (id)
 );
@@ -82,9 +82,9 @@ CREATE TABLE InstanciaPC (
     fomeAtual SMALLINT NOT NULL,
     sanidadeAtual SMALLINT NOT NULL,
     modoFantasma BOOLEAN NOT NULL,
-    x DECIMAL(6, 6) NOT NULL,
-    y DECIMAL(6, 6) NOT NULL,
-    z DECIMAL(6, 6) NOT NULL,
+    x INTEGER NOT NULL,
+    y INTEGER NOT NULL,
+    z INTEGER NOT NULL,
     FOREIGN KEY (idPersonagemJogavel) REFERENCES PersonagemJogavel (id)
 );
 
