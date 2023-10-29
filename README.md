@@ -18,9 +18,9 @@ Este repositório contém informações relacionadas ao projeto de criação des
  - [Dicionário de Dados](./docs/DD_dont_starve_together.md)
 
 ### Módulo 2 (WIP)
- - [DDL]()
- - [DML]()
- - [DQL]()
+ - [DDL](https://github.com/SBD1/2023.2-DontStarveTogether/blob/main/sql/DDL.sql)
+ - [DML](https://github.com/SBD1/2023.2-DontStarveTogether/blob/main/sql/DML.sql)
+ - [DQL](https://github.com/SBD1/2023.2-DontStarveTogether/blob/main/sql/DQL.sql)
  - [Algoritmo Relacional]()
  - [Formas Normais]()
  - [Apresentação]()
@@ -29,7 +29,7 @@ Este repositório contém informações relacionadas ao projeto de criação des
 - [Levi Queiroz](https://github.com/LeviQ27)
 - [Luis Bruno](https://github.com/lbrunofidelis)
 - [André Goretti](https://github.com/AGoretti)
-- [Yago Amin]()
+- [Yago Amin](https://github.com/Yagoas)
 
 # Histórico de Versão
 
@@ -37,4 +37,5 @@ Este repositório contém informações relacionadas ao projeto de criação des
 | :-----: | :------: | ------- | -------- |
 | 1.0 | 02/10/2023 | Criação do Documento | [Levi Queiroz](https://github.com/LeviQ27) [Luis Bruno](https://github.com/lbrunofidelis) [Andre Goretti](https://github.com/AGoretti) |
 | 1.1 | 23/10/2023 | Cria tópicos e links p/ documentos | [Luis Bruno](https://github.com/lbrunofidelis) |
+| 1.2 | 29/10/2023 | Atualiza links p/ documentos | [Yago Amin](https://github.com/Yagoas) |
 
