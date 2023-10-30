@@ -103,3 +103,34 @@
     Habilidade h ⨝_{h.idItemGerado = i.id} Item i
 )
 ```
+## Instruções para um save game
+
+### Atualizar os dados da instância do personagem jogável
+```
+InstanciaPC ← InstanciaPC - σ id = idInstanciaPC (InstanciaPC)
+InstanciaPC ← InstanciaPC ∪ {idInstanciaPC, novaVidaAtual, novaFomeAtual, novaSanidadeAtual, novoModoFantasma, novaCoordenadaX, novaCoordenadaY, novaCoordenadaZ}
+```
+
+### Atualizar Instância do NPC
+```
+InstanciaNpc ← InstanciaNpc - σ id = idInstanciaNpc (InstanciaNpc)
+InstanciaNpc ← InstanciaNpc ∪ { (idInstanciaNpc, novaVidaAtual) }
+```
+
+### Atualizar Inventário
+```
+Inventario ← Inventario - σ idItem = idItem AND idPersonagemJogavel = idPersonagemJogavel (Inventario)
+Inventario ← Inventario ∪ { (idItem, idPersonagemJogavel, novaQuantidade) }
+```
+
+### Atualizar Mundo
+```
+Mundo ← Mundo - σ id = idMundo (Mundo)
+Mundo ← Mundo ∪ { (idMundo, novaEstacao) }
+```
+
+### Atualiza a Instância do Colocável
+```
+InstanciaColocavel ← InstanciaColocavel - σ id = idInstanciaColocavel (InstanciaColocavel)
+InstanciaColocavel ← InstanciaColocavel ∪ { (idInstanciaColocavel, novaCoordenadaX, novaCoordenadaY, novaCoordenadaZ, novaDurabilidadeAtual) }
+```
