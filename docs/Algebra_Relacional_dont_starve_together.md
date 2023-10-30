@@ -134,3 +134,10 @@ Mundo ← Mundo ∪ { (idMundo, novaEstacao) }
 InstanciaColocavel ← InstanciaColocavel - σ id = idInstanciaColocavel (InstanciaColocavel)
 InstanciaColocavel ← InstanciaColocavel ∪ { (idInstanciaColocavel, novaCoordenadaX, novaCoordenadaY, novaCoordenadaZ, novaDurabilidadeAtual) }
 ```
+
+## Histórico de Versão
+
+| Verção    | Data | Descrição | Autor |
+| -------- | ------- | -------| -------|
+| 1.0 | 30/10/2023   | Criação do Documento | [Andre Goretti](https://github.com/AGoretti) |
+| 1.1 | 30/10/2023   | Update |[Andre Goretti](https://github.com/AGoretti) |
