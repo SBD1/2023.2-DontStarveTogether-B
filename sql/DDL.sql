@@ -1,10 +1,12 @@
 -- Criacao: 25/10/2023
 -- Autores: Luis Bruno
 -- Descrição: Criação de tabelas (DDL)
--- ROLLBACK
+-- Atualizações: 
+-- 		- Criação de todas as tabelas atualizadas de acordo com o MRel.
+
 BEGIN TRANSACTION;
 
-DROP TYPE IF EXISTS "estacao";
+DROP TYPE IF EXISTS "Estacao";
 DROP TYPE IF EXISTS "TipoNpc";
 
 CREATE TABLE Usuario (
@@ -92,24 +94,29 @@ CREATE TABLE DialogoPersonagem (
 CREATE TABLE InstanciaNpc (
     id SERIAL PRIMARY KEY,
     idNpc INTEGER NOT NULL,
+	idMundo INTEGER NOT NULL,
     x INTEGER NOT NULL,
     y INTEGER NOT NULL,
     z INTEGER NOT NULL,
     vidaAtual SMALLINT NOT NULL,
-    FOREIGN KEY (idNpc) REFERENCES Npc (id)
+    FOREIGN KEY (idNpc) REFERENCES Npc (id),
+	FOREIGN KEY (idMundo) REFERENCES Mundo (id)
 );
 
 CREATE TABLE InstanciaPC (
     id SERIAL PRIMARY KEY,
     idPersonagemJogavel INTEGER NOT NULL,
+	  idMundo INTEGER NOT NULL,
     vidaAtual SMALLINT NOT NULL,
     fomeAtual SMALLINT NOT NULL,
     sanidadeAtual SMALLINT NOT NULL,
     modoFantasma BOOLEAN NOT NULL,
+		tamanhoInventario SMALLINT NOT NULL DEFAULT(10),
     x INTEGER NOT NULL,
     y INTEGER NOT NULL,
     z INTEGER NOT NULL,
-    FOREIGN KEY (idPersonagemJogavel) REFERENCES PersonagemJogavel (id)
+    FOREIGN KEY (idPersonagemJogavel) REFERENCES PersonagemJogavel (id),
+	FOREIGN KEY (idMundo) REFERENCES Mundo (id)
 );
 
 CREATE TABLE Alianca (
@@ -170,7 +177,7 @@ CREATE TABLE EquipamentoPersonagem (
     id SERIAL PRIMARY KEY,
     idInstanciaPc INTEGER NOT NULL,
     idEquipamento INTEGER NOT NULL,
-	durabilidadeAtual SMALLINT NOT NULL,
+	  durabilidadeAtual SMALLINT NOT NULL,
     FOREIGN KEY (idInstanciaPc) REFERENCES InstanciaPC (id),
     FOREIGN KEY (idEquipamento) REFERENCES Equipamento (id)
 );
@@ -189,9 +196,9 @@ CREATE TABLE Colocavel (
     id SERIAL PRIMARY KEY,
     idItem INTEGER NOT NULL,
     tamanho SMALLINT NOT NULL,
-    temColisao BOOLEAN NOT NULL,
+    temColisao BOOLEAN NOT NULL DEFAULT(true),
     durabilidade SMALLINT,
-    eEstacaoCraft BOOLEAN NOT NULL,
+    eEstacaoCraft BOOLEAN NOT NULL DEFAULT(false),
     FOREIGN KEY (idItem) REFERENCES Item (id)
 );
 
