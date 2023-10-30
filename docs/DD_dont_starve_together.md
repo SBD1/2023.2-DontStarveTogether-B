@@ -6,31 +6,36 @@ O objetivo deste documento é descrever o dicionário de dados do banco de dados
 
 ## Tabela Mundo
 
-| Tabela | Descrição |
-|:----:|:-----:|
-| Mundo | Armazenará os dados do mundo |
+| Tabela | Descrição | Observações |
+|:----:|:-----:|:-----:|
+| Mundo | Armazenará os dados do mundo | Possui chave estrangeira para as tabelas TipoMundo e Usuario |
 
 #### Campos
 
 | Nome | Descrição | Tipo de Dado | Tamanho | Restrições de Domínio |
 | :------: | :------: | :------: | :------: | :------: |
 | id | Identificador do mundo | int |  | PK |
-| nome | Nome do mundo | varchar | 50 | Not Null |
-| tamanho | Tamanho do mundo (small, medium, large (default) e huge) |  || Not Null |
+| tipo | Tipo de mundo | int |  | FK, Not Null |
+| idUsuario | Identificador do usuário que criou o mundo |  |  | FK, Not Null |
+| nome | Nome do mundo | varchar |  | Not Null |
+| estacao | Indica a estação do ano que está no mundo | enum |("Autumn","Winter", "Spring", "Summer") Default "Autumn"| Not Null |
+| temEstrada | Define se o mundo deve gerar estradas ou não | boolean |  | Not Null |
 
-## Tabela Bioma
+## Tabela Tipo Mundo
 
 | Tabela | Descrição | Observações |
 |:----:|:-----:|:-----:|
-| Bioma | Armazenará os dados do bioma, que é o ambiente ou habitat para as criaturas presentes no mundo do jogo. | Possui chave estrangeira para Mundo |
+| TipoMundo | Armazenará os tipos de mundo |  |
 
 #### Campos
 
 | Nome | Descrição | Tipo de Dado | Tamanho | Restrições de Domínio |
 | :------: | :------: | :------: | :------: | :------: |
-| id | Identificador do bioma | int |  | PK |
-| nome | Nome do bioma| varchar | 50 | Not Null |
-| estacao | A estação atual no mundo (por exemplo, verão, inverno, outono, primavera) | varchar | 50 | Not Null |
+| id | Identificador do tipo do mundo | int |  | PK |
+| nome | Nome do bioma| varchar |  | Not Null |
+| x | Tamanho total em x | int |  | Not Null |
+| y | Tamanho total em y | int |  | Not Null |
+| z | Tamanho total em z | int |  | Not Null |
 
 ## Tabela Personagem
 
@@ -43,26 +48,24 @@ O objetivo deste documento é descrever o dicionário de dados do banco de dados
 | Nome | Descrição | Tipo de Dado | Tamanho | Restrições de Domínio |
 | :------: | :------: | :------: | :------: | :------: |
 | id | Identificador do personagem | int |  | PK |
-| nome | Nome do personagem | varchar | 50 | Not Null |
-| descricao | Descrição do personagem, tais como história, gostos, vantagens e/ou desvantagens  | varchar | 200 | Not Null |
-| vida | Quantidade de pontos de vida base que o personagem possui | int |  | Not Null |
+| nome | Nome do personagem | varchar | 30 | Not Null |
+| descricao | Descrição do personagem, tais como história, gostos, vantagens e/ou desvantagens  | varchar | 100 | Not Null |
+| vida | Quantidade de pontos de vida base que o personagem possui | smallint |  | Not Null |
 
-## Tabela Player Character
+## Tabela Personagem Jogável
 
 | Tabela | Descrição | Observações |
 |:----:|:-----:|:-----:|
-| Player Character (PC) | Armazenará os dados de um personagem jogável  | Possui chave estrangeira para a tabela Item |
+| PersonagemJogavel | Armazenará os dados de um personagem jogável  | Possui chave estrangeira para a tabela Personagem e Consumível |
 
 #### Campos
 
 | Nome | Descrição | Tipo de Dado | Tamanho | Restrições de Domínio |
 | :------: | :------: | :------: | :------: | :------: |
-| id | Identificador do personagem| int |  | PK |
-| idComidaFavorita |  | int |  | FK |
-| vida | Quantidade atual de vida do personagem | int || Not Null |
+| idPersonagem | Identificador do personagem jogável | int |  | PK, Not Null |
+| idComidaFavorita |  | smallint |  | FK, Not Null |
 | fome | Nível de fome do personagem | int || Not Null |
-| sanidade | Nível de sanidade do personagem | int || Not Null |
-| modoFantastma | Indica se um personagem está no modo fantasma ou não (morto). Um PC fica no modo fantasma até ser ressussitado | boolean || Not Null |
+| sanidade | Nível de sanidade do personagem | smallint || Not Null |
 
 ## Tabela Tabela Non Player Character
 
@@ -82,11 +85,11 @@ O objetivo deste documento é descrever o dicionário de dados do banco de dados
 | eBoss | Indica que o NPC é um boss | boolean || Not Null |
 | dialogo | Atributo que faz o diálogo do NPC, caso exista | varchar | 300 | Not Null |
 
-## Tabela Instancia
+## Tabela Instancia Personagem Jogável
 
 | Tabela | Descrição | Observações | 
 |:----:|:-----:|:-----:|
-| Instancia | Armazenará os dados das instâncias dos NPC | Possui chave estrangeira para NPC |
+| InstanciaPC | Armazenará os dados das instâncias dos Personagens Jogáveis | Possui chave estrangeira para tabela Personagem |
 
 #### Campos
 
@@ -97,6 +100,25 @@ O objetivo deste documento é descrever o dicionário de dados do banco de dados
 | nome | Nome da instância | Varchar | 50 | Not Null |
 | descricao | Descrição da instância | Varchar | 200 | Not Null |
 | localizacao | Localização da instância | Varchar | 200 | Not Null |
+| modoFantastma | Indica se um personagem está no modo fantasma ou não (morto). Um PC fica no modo fantasma até ser ressussitado | boolean |  | Not Null |
+| tamanhoInventario | Indica se um personagem está no modo fantasma ou não (morto). Um PC fica no modo fantasma até ser ressussitado | smallint |  | Not Null |
+
+## Tabela Instancia Non Player Character
+
+| Tabela | Descrição | Observações | 
+|:----:|:-----:|:-----:|
+| InstanciaNpc | Armazenará os dados das instâncias dos PErsonagens Jogáveis | Possui chave estrangeira para tabela Personagem |
+
+#### Campos
+
+| Nome | Descrição | Tipo de Dado | Tamanho | Restrições de Domínio |
+| :------: | :------: | :------: | :------: | :------: |
+| id | Identificador da instância | int | ------ | PK |
+| idNPC | Identificador do NPC associado | int | ------ | FK |
+| nome | Nome da instância | Varchar | 50 | Not Null |
+| descricao | Descrição da instância | Varchar | 200 | Not Null |
+| localizacao | Localização da instância | Varchar | 200 | Not Null |
+| modoFantastma | Indica se um personagem está no modo fantasma ou não (morto). Um PC fica no modo fantasma até ser ressussitado | boolean || Not Null |
 
 
 ## Tabela Equipamento
@@ -199,3 +221,4 @@ O objetivo deste documento é descrever o dicionário de dados do banco de dados
 | :-----: | :------: | ------- | -------- |
 | 1.0 | 02/10/2023 | Criação do Documento | [Levi Queiroz](https://github.com/LeviQ27) |
 | 1.1 | 02/10/2023 | Criação das Tabelas | [Levi Queiroz](https://github.com/LeviQ27) [Luis Bruno](https://github.com/lbrunofidelis) [Andre Goretti](https://github.com/AGoretti) |
+| 1.1 | 02/10/2023 | Atualizando as Tabelas | [Levi Queiroz](https://github.com/LeviQ27) [Luis Bruno](https://github.com/lbrunofidelis) [Andre Goretti](https://github.com/AGoretti) |
