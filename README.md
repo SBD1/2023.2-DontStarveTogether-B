@@ -21,7 +21,7 @@ Este repositório contém informações relacionadas ao projeto de criação des
  - [DDL](https://github.com/SBD1/2023.2-DontStarveTogether/blob/main/sql/DDL.sql)
  - [DML](https://github.com/SBD1/2023.2-DontStarveTogether/blob/main/sql/DML.sql)
  - [DQL](https://github.com/SBD1/2023.2-DontStarveTogether/blob/main/sql/DQL.sql)
- - [Algoritmo Relacional]()
+ - [Algoritmo Relacional](./docs/Algebra_Relacional_dont_starve_together.md)
  - [Formas Normais]()
  - [Apresentação]()
 
