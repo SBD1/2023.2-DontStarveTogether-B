@@ -197,6 +197,9 @@ BEGIN;
     -- Atualizar Instância do NPC
     UPDATE InstanciaNpc
         SET vidaAtual = :novaVidaAtual
+            x = :novaCoordenadaX,
+            y = :novaCoordenadaY,
+            z = :novaCoordenadaZ
     WHERE id = :idInstanciaNpc;
 
     -- Atualizar Inventário
