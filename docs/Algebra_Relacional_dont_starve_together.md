@@ -114,7 +114,7 @@ InstanciaPC ← InstanciaPC ∪ {idInstanciaPC, novaVidaAtual, novaFomeAtual, no
 ### Atualizar Instância do NPC
 ```
 InstanciaNpc ← InstanciaNpc - σ id = idInstanciaNpc (InstanciaNpc)
-InstanciaNpc ← InstanciaNpc ∪ { (idInstanciaNpc, novaVidaAtual) }
+InstanciaNpc ← InstanciaNpc ∪ { (idInstanciaNpc, novaVidaAtua, novaCoordenadaX, novaCoordenadaY, novaCoordenadaZl) }
 ```
 
 ### Atualizar Inventário
