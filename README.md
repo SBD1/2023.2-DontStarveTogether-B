@@ -17,13 +17,13 @@ Este repositório contém informações relacionadas ao projeto de criação des
  - [Modelo Relacional](./docs/MRel_dont_starve_together.md)
  - [Dicionário de Dados](./docs/DD_dont_starve_together.md)
 
-### Módulo 2 (WIP)
+### Módulo 2
  - [DDL](https://github.com/SBD1/2023.2-DontStarveTogether/blob/main/sql/DDL.sql)
  - [DML](https://github.com/SBD1/2023.2-DontStarveTogether/blob/main/sql/DML.sql)
  - [DQL](https://github.com/SBD1/2023.2-DontStarveTogether/blob/main/sql/DQL.sql)
  - [Algoritmo Relacional](./docs/Algebra_Relacional_dont_starve_together.md)
  - [Formas Normais]()
- - [Apresentação]()
+ - [Apresentação](https://www.youtube.com/watch?v=KvMzjG1tIjk)
 
 ## Alunos
 - [Levi Queiroz](https://github.com/LeviQ27)
