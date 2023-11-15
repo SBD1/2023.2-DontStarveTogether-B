@@ -19,8 +19,8 @@ DECLARE
 	tamanho SMALLINT; -- Tamanho do inventario da instancia jogável
 	quantidade_de_itens SMALLINT; -- Quantidade de itens na mochila da instancia
 BEGIN
-	SELECT tamanhoInventario from InstanciaPC WHERE id = NEW.id INTO tamanho;
-	SELECT COUNT(*) FROM Inventario WHERE idInstanciaPc = NEW.id INTO quantidade_de_itens;
+	SELECT tamanhoInventario from InstanciaPC WHERE id = NEW.idInstanciaPc INTO tamanho;
+	SELECT COUNT(*) FROM Inventario WHERE idInstanciaPc = NEW.idInstanciaPc INTO quantidade_de_itens;
 	IF tamanho < quantidade_de_itens + 1 THEN
 		RAISE EXCEPTION 'Sua mochila está cheia!';
 	END IF;
