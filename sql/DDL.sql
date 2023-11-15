@@ -118,16 +118,14 @@ CREATE TABLE InstanciaPC (
     id SERIAL PRIMARY KEY,
     idPersonagemJogavel INTEGER NOT NULL,
 	  idMundo INTEGER NOT NULL,
+    idBioma INTEGER NOT NULL,
     vidaAtual SMALLINT NOT NULL,
     fomeAtual SMALLINT NOT NULL,
     sanidadeAtual SMALLINT NOT NULL,
     modoFantasma BOOLEAN NOT NULL,
 		tamanhoInventario SMALLINT NOT NULL DEFAULT(10),
-    x INTEGER NOT NULL,
-    y INTEGER NOT NULL,
-    z INTEGER NOT NULL,
     FOREIGN KEY (idPersonagemJogavel) REFERENCES PersonagemJogavel (id),
-	FOREIGN KEY (idMundo) REFERENCES Mundo (id)
+	FOREIGN KEY (idMundo, idBioma) REFERENCES BiomaMundo (idMundo, idBioma)
 );
 
 CREATE TABLE Alianca (
@@ -217,12 +215,10 @@ CREATE TABLE InstanciaColocavel (
 	id SERIAL PRIMARY KEY,
 	idColocavel INTEGER NOT NULL,
 	idMundo INTEGER NOT NULL,
-	x INTEGER NOT NULL,
-	y INTEGER NOT NULL,
-	z INTEGER NOT NULL,
+  idBioma INTEGER NOT NULL,
 	durabilidadeAtual SMALLINT NOT NULL,
 	FOREIGN KEY (idColocavel) REFERENCES Colocavel (id),
-	FOREIGN KEY (idMundo) REFERENCES Mundo (id)
+	FOREIGN KEY (idMundo, idBioma) REFERENCES BiomaMundo (idMundo, idBioma)
 );
 
 CREATE TABLE Inventario (
