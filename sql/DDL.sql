@@ -20,9 +20,7 @@ CREATE TABLE Usuario (
 CREATE TABLE TipoMundo (
     id SERIAL PRIMARY KEY,
     nome VARCHAR NOT NULL,
-    x INTEGER NOT NULL,
-    y INTEGER NOT NULL,
-    z INTEGER NOT NULL
+    quantidadeBiomas INTEGER NOT NULL
 );
 
 CREATE TYPE "Estacao" AS ENUM ('Autumn', 'Winter', 'Spring', 'Summer');
@@ -34,8 +32,23 @@ CREATE TABLE Mundo (
     nome VARCHAR NOT NULL,
     estacao "Estacao" DEFAULT 'Autumn' NOT NULL,
     temEstrada BOOLEAN NOT NULL,
+    diaAtual INTEGER NOT NULL DEFAULT(0),
     FOREIGN KEY (idUsuario) REFERENCES Usuario (nomeUsuario),
     FOREIGN KEY (tipo) REFERENCES TipoMundo (id)
+);
+
+CREATE TABLE Bioma (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR NOT NULL,
+    descricao VARCHAR NOT NULL
+);
+
+CREATE TABLE BiomaMundo (
+    idMundo INTEGER NOT NULL,
+    idBioma INTEGER NOT NULL,
+    PRIMARY KEY (idMundo, idBioma),
+    FOREIGN KEY (idMundo) REFERENCES Mundo (id),
+    FOREIGN KEY (idBioma) REFERENCES Bioma (id)
 );
 
 CREATE TABLE Personagem (
@@ -95,12 +108,10 @@ CREATE TABLE InstanciaNpc (
     id SERIAL PRIMARY KEY,
     idNpc INTEGER NOT NULL,
 	idMundo INTEGER NOT NULL,
-    x INTEGER NOT NULL,
-    y INTEGER NOT NULL,
-    z INTEGER NOT NULL,
+    idBioma INTEGER NOT NULL,
     vidaAtual SMALLINT NOT NULL,
     FOREIGN KEY (idNpc) REFERENCES Npc (id),
-	FOREIGN KEY (idMundo) REFERENCES Mundo (id)
+	FOREIGN KEY (idMundo, idBioma) REFERENCES BiomaMundo (idMundo, idBioma)
 );
 
 CREATE TABLE InstanciaPC (
