@@ -17,10 +17,10 @@ INSERT INTO Usuario (nomeUsuario, nome, email, senha) VALUES ('lukeskywalker', '
 SELECT * FROM Usuario;
 
 -- TipoMundo
-INSERT INTO TipoMundo (nome, x, y, z) VALUES ('Small', 100, 100, 100),
-       ('Medium', 300, 300, 300),
-       ('Large', 500, 500, 500),
-       ('Huge', 1000, 1000, 1000);
+INSERT INTO TipoMundo (nome, quantidadeBiomas) VALUES ('Small', 20),
+       ('Medium', 40),
+       ('Large', 60),
+       ('Huge', 100);
 
 SELECT * FROM TipoMundo;
 
@@ -35,6 +35,30 @@ VALUES ('lukeskywalker', 1, 'Mundo sem nome', 'Autumn', true),
        ('fulano123', 4, 'lol > dota', 'Summer', true);
 	  
 SELECT * FROM Mundo;
+
+-- Bioma (assemelha-se a sala)
+INSERT INTO Bioma (nome, descricao) VALUES ('Floresta', 'Uma floresta pacífica e com muitos recursos para explorar'),
+('Pantanal', 'Um pantanal perigoso, com várias criaturas hostis'),
+('Savana', 'Uma enorme planície com gramado, sem muitos recursos e pouca flora, mas com diversas opções para caça'),
+('Deserto', 'Um deserto com recursos locais como cactos e plantas secas, e levemente mais quente e seco que Brasília'),
+('Terra rochosa', 'Um ambiente rochoso e com diversas recompensas em minerais, mas com seres no minimo esquisitos'),
+('Caverna', 'Uma caverna extremamente hostil, com criaturas e recursos nunca explorados. E muitos cogumelos');
+
+SELECT * FROM Bioma;
+
+-- Biomamundo
+INSERT INTO BiomaMundo (idMundo, idBioma) VALUES (1, 1),
+(1, 2),
+(1, 3),
+(1, 4),
+(1, 5),
+(1, 6),
+(2, 1),
+(2, 2),
+(2, 3),
+(3, 1);
+
+SELECT * FROM BiomaMundo;
 
 -- Personagem
 INSERT INTO Personagem (nome, descricao, vida) VALUES ('Wilson', 'Cientista', 150),
@@ -120,32 +144,32 @@ VALUES (1, 1),
 SELECT * FROM DialogoPersonagem;
 
 -- InstanciaNpc
-INSERT INTO InstanciaNpc (idNpc, idMundo, x, y, z, vidaAtual) VALUES
-(1, 1, 10, 20, 30, 90),
-(1, 1, 15, 25, 35, 85),
-(1, 1, 12, 18, 32, 88),
-(1, 1, 11, 22, 34, 92),
-(1, 1, 14, 21, 31, 87),
-(2, 1, 40, 50, 60, 80),
-(2, 1, 45, 55, 63, 82),
-(2, 1, 42, 58, 65, 81),
-(2, 1, 41, 52, 67, 84),
-(2, 1, 44, 51, 69, 83),
-(3, 1, 70, 80, 90, 70),
-(3, 1, 75, 85, 95, 72),
-(3, 2, 72, 88, 97, 71),
-(3, 2, 71, 82, 99, 74),
-(3, 2, 74, 81, 92, 73),
-(4, 2, 10, 110, 120, 1350); -- Criar check para que o HPAtual não seja maior que o Hp total
+INSERT INTO InstanciaNpc (idNpc, idMundo, idBioma, vidaAtual) VALUES
+(1, 1, 1, 90),
+(1, 1, 1, 85),
+(1, 1, 2, 88),
+(1, 1, 2, 92),
+(1, 1, 3, 87),
+(2, 1, 4, 80),
+(2, 1, 5, 82),
+(2, 1, 6, 81),
+(2, 1, 3, 84),
+(2, 1, 3, 83),
+(3, 1, 4, 70),
+(3, 1, 5, 72),
+(3, 2, 1, 71),
+(3, 2, 1, 74),
+(3, 2, 2, 73),
+(4, 2, 2, 1350); -- Criar check para que o HPAtual não seja maior que o Hp total
 
 SELECT * FROM InstanciaNpc;
 
 -- InstanciaPC
-INSERT INTO InstanciaPC (idPersonagemJogavel, idMundo, vidaAtual, fomeAtual, sanidadeAtual, modoFantasma, x, y, z) VALUES
-    (1, 1, 95, 100, 60, false, 10, 20, 30),
-    (2, 1, 20, 80, 15, false, 15, 25, 35),
-    (3, 1, 30, 100, 50, true, 12, 18, 32),
-    (4, 2, 49, 90, 75, false, 11, 22, 34);
+INSERT INTO InstanciaPC (idPersonagemJogavel, idMundo, idBioma, vidaAtual, fomeAtual, sanidadeAtual, modoFantasma) VALUES
+    (1, 1, 1, 95, 100, 60, false),
+    (2, 1, 1, 20, 80, 15, false),
+    (3, 1, 2, 30, 100, 50, true),
+    (4, 2, 2, 49, 90, 75, false);
 
 SELECT * FROM InstanciaPC;
 
@@ -252,17 +276,17 @@ INSERT INTO Colocavel (idItem, tamanho, temColisao, durabilidade, eEstacaoCraft)
 SELECT * FROM Colocavel;
 
 -- InstanciaColocavel
-INSERT INTO InstanciaColocavel (idColocavel, idMundo, x, y, z, durabilidadeAtual) VALUES
-		(2, 1, 20, 21, 1, 6),
-		(2, 1, 20, 22, 1, 6),
-		(2, 1, 20, 23, 1, 6),
-		(2, 1, 21, 23, 1, 6),
-		(2, 1, 22, 23, 1, 6),
-		(2, 1, 22, 24, 1, 6),
-		(2, 1, 22, 25, 1, 6),
-		(2, 1, 22, 26, 1, 6),
-		(3, 1, 19, 20, 1, 3),
-		(4, 1, 20, 20, 1, 3);
+INSERT INTO InstanciaColocavel (idColocavel, idMundo, idBioma, durabilidadeAtual) VALUES
+		(2, 1, 1, 6),
+		(2, 1, 1, 6),
+		(2, 1, 1, 6),
+		(2, 1, 1, 6),
+		(2, 1, 2, 6),
+		(2, 1, 2, 6),
+		(2, 1, 2, 6),
+		(2, 1, 2, 6),
+		(3, 1, 2, 3),
+		(4, 1, 2, 3);
 
 SELECT * FROM InstanciaColocavel;
 
@@ -309,6 +333,7 @@ BEGIN TRANSACTION;
 -- Alters - p/ resetar os ids
 ALTER SEQUENCE TipoMundo_id_seq RESTART WITH 1;
 ALTER SEQUENCE Mundo_id_seq RESTART WITH 1;
+ALTER SEQUENCE Bioma_id_seq RESTART WITH 1;
 ALTER SEQUENCE Personagem_id_seq RESTART WITH 1;
 ALTER SEQUENCE PersonagemUsuario_id_seq RESTART WITH 1;
 ALTER SEQUENCE PersonagemJogavel_id_seq RESTART WITH 1;
@@ -346,6 +371,8 @@ DROP TABLE IF EXISTS Npc CASCADE;
 DROP TABLE IF EXISTS PersonagemJogavel CASCADE;
 DROP TABLE IF EXISTS PersonagemUsuario CASCADE;
 DROP TABLE IF EXISTS Personagem CASCADE;
+DROP TABLE IF EXISTS BiomaMundo CASCADE;
+DROP TABLE IF EXISTS Bioma CASCADE;
 DROP TABLE IF EXISTS Mundo CASCADE;
 DROP TABLE IF EXISTS TipoMundo CASCADE;
 DROP TABLE IF EXISTS Usuario CASCADE;
