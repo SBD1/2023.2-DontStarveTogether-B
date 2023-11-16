@@ -25,6 +25,12 @@ Este repositório contém informações relacionadas ao projeto de criação des
  - [Formas Normais]()
  - [Apresentação](https://www.youtube.com/watch?v=KvMzjG1tIjk)
 
+### Módulo 3
+- [Triggers/Stored Procedures](#)
+- [Views](#)
+- [Permissões](#)
+- [Jogo](#)
+
 ## Alunos
 - [Levi Queiroz](https://github.com/LeviQ27)
 - [Luis Bruno](https://github.com/lbrunofidelis)
