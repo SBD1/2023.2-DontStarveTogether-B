@@ -46,9 +46,8 @@ BEGIN;
         ipc.fomeAtual AS "Fome Atual",
         ipc.sanidadeAtual AS "Sanidade Atual",
         ipc.modoFantasma AS "Modo Fantasma",
-        ipc.x AS "Coordenada X",
-        ipc.y AS "Coordenada Y",
-        ipc.z AS "Coordenada Z"
+        ipc.idMundo AS "Mundo",
+        ipc.idBioma AS "Bioma"
     FROM InstanciaPC ipc
     WHERE ipc.id = :carregaId;
 
@@ -57,9 +56,8 @@ BEGIN;
         inpc.id AS ID,
         inpc.idNpc AS "ID do NPC",
         inpc.vidaAtual AS "Vida Atual",
-        inpc.x AS "Coordenada X",
-        inpc.y AS "Coordenada Y",
-        inpc.z AS "Coordenada Z",
+        inpc.idMundo AS "Mundo",
+        inpc.idBioma AS "Bioma",
 		npc.tiponpc AS "Tipo NPC",
 		npc.eboss AS Boss
     FROM InstanciaNpc inpc JOIN npc ON npc.id = inpc.id
@@ -99,9 +97,7 @@ BEGIN;
     SELECT
         id AS ID,
         nome AS Nome,
-        x AS "Coordenada X",
-        y AS "Coordenada Y",
-        z AS "Coordenada Z"
+        quantidadeBiomas AS "Quantidade de biomas"
     FROM TipoMundo AS tm
     WHERE tm.id = :carregaIdTipoMundo;
 
@@ -154,9 +150,7 @@ BEGIN;
         ic.id AS "ID da Instância do Colocável",
         ic.idColocavel AS "ID do Colocável",
         ic.idMundo AS "ID do Mundo",
-        ic.x AS "Coordenada X",
-        ic.y AS "Coordenada Y",
-        ic.z AS "Coordenada Z",
+        ic.idBioma AS "Bioma",
         ic.durabilidadeAtual AS "Durabilidade Atual",
         cl.tamanho AS "Tamanho do Colocável"
     FROM InstanciaColocavel ic
@@ -184,22 +178,18 @@ BEGIN;
 
     -- Atualizar os dados da instância do personagem jogável
     UPDATE InstanciaPC
-    SET
-        vidaAtual = :novaVidaAtual,
-        fomeAtual = :novaFomeAtual,
-        sanidadeAtual = :novaSanidadeAtual,
-        modoFantasma = :novoModoFantasma,
-        x = :novaCoordenadaX,
-        y = :novaCoordenadaY,
-        z = :novaCoordenadaZ
+        SET
+            vidaAtual = :novaVidaAtual,
+            fomeAtual = :novaFomeAtual,
+            sanidadeAtual = :novaSanidadeAtual,
+            modoFantasma = :novoModoFantasma,
+            idBioma = :novoBioma
     WHERE id = :idInstanciaPC;
 
     -- Atualizar Instância do NPC
     UPDATE InstanciaNpc
-        SET vidaAtual = :novaVidaAtual
-            x = :novaCoordenadaX,
-            y = :novaCoordenadaY,
-            z = :novaCoordenadaZ
+        SET vidaAtual = :novaVidaAtual,
+            idBioma = :novoBioma
     WHERE id = :idInstanciaNpc;
 
     -- Atualizar Inventário
@@ -218,9 +208,7 @@ BEGIN;
 -- Atualiza a Instância do Colocável
     UPDATE InstanciaColocavel
         SET
-            x = :novaCoordenadaX,
-            y = :novaCoordenadaY,
-            z = :novaCoordenadaZ,
+            idBioma = :novoBioma,
             durabilidadeAtual = :novaDurabilidadeAtual
     WHERE id = :idInstanciaColocavel;
 
