@@ -169,13 +169,12 @@ CREATE TABLE Receita (
 );
 
 CREATE TABLE Equipamento (
-    id SERIAL PRIMARY KEY,
-    idItem INTEGER NOT NULL,
+    idItem SERIAL PRIMARY KEY,
     parteCorpo SMALLINT NOT NULL,
     durabilidade SMALLINT NOT NULL,
     protecao INTEGER NOT NULL,
     aumentaInventario SMALLINT NOT NULL DEFAULT(0),
-    FOREIGN KEY (idItem) REFERENCES Item (id)
+    FOREIGN KEY (idItem) REFERENCES Item (id) 
 );
 
 CREATE TABLE EquipamentoPersonagem (
@@ -184,12 +183,11 @@ CREATE TABLE EquipamentoPersonagem (
     idEquipamento INTEGER NOT NULL,
 	  durabilidadeAtual SMALLINT NOT NULL,
     FOREIGN KEY (idInstanciaPc) REFERENCES InstanciaPC (id),
-    FOREIGN KEY (idEquipamento) REFERENCES Equipamento (id)
+    FOREIGN KEY (idEquipamento) REFERENCES Equipamento (idItem)
 );
 
 CREATE TABLE Consumivel (
-    id SERIAL PRIMARY KEY,
-    idItem INTEGER NOT NULL,
+    idItem SERIAL PRIMARY KEY,
     vida SMALLINT,
     sanidade SMALLINT,
     fome SMALLINT,
@@ -198,8 +196,7 @@ CREATE TABLE Consumivel (
 );
 
 CREATE TABLE Colocavel (
-    id SERIAL PRIMARY KEY,
-    idItem INTEGER NOT NULL,
+    idItem SERIAL PRIMARY KEY,
     tamanho SMALLINT NOT NULL,
     temColisao BOOLEAN NOT NULL DEFAULT(true),
     durabilidade SMALLINT,
@@ -213,7 +210,7 @@ CREATE TABLE InstanciaColocavel (
 	idMundo INTEGER NOT NULL,
   idBioma INTEGER NOT NULL,
 	durabilidadeAtual SMALLINT NOT NULL,
-	FOREIGN KEY (idColocavel) REFERENCES Colocavel (id),
+	FOREIGN KEY (idColocavel) REFERENCES Colocavel (idItem),
 	FOREIGN KEY (idMundo, idBioma) REFERENCES BiomaMundo (idMundo, idBioma)
 );
 
