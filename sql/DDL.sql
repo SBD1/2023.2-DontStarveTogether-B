@@ -12,7 +12,7 @@ DROP TYPE IF EXISTS "TipoNpc";
 CREATE TABLE Usuario (
     nomeUsuario VARCHAR NOT NULL,
     nome VARCHAR NOT NULL,
-    email VARCHAR NOT NULL,
+    email VARCHAR NOT NULL UNIQUE,
     senha VARCHAR NOT NULL,
 	PRIMARY KEY (nomeUsuario)
 );
