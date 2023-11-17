@@ -25,11 +25,20 @@
 
 ### Versão 2.2
 <div align="center">
-  <img src="../assets/Modelo-Relacionalv2-2.png" aly="Modelo relacional v3" style="width: 900px">
+  <img src="../assets/Modelo-Relacionalv2-2.png" aly="Modelo relacional v2.2" style="width: 900px">
 </div>
 
 <p align="justify"> 
 A versão 2.2 trouxe modificações significativas na estrutura da tabela de itens. A separação da parte de receita foi implementada visando evitar redundâncias e garantir a devida normalização. Adicionalmente, a atualização possibilitou a separação dos itens conforme suas quantidades corretas para o processo de criação. É importante ressaltar que a tabela de receitas foi transformada em uma entidade fraca de itens, resultando em melhorias substanciais no sistema como um todo.
+</p>
+
+### Versão 3.0
+<div align="center">
+  <img src="../assets/Modelo-Relacional-v3.png" aly="Modelo relacional v3" style="width: 900px">
+</div>
+
+<p align="justify"> 
+A versão 3 traz as modificações do banco voltadas para o sistema de Salas, ao invés de coordenadas, como sugerido para melhor dinâmica no desenvolvimento do jogo. Essa versão contempla a adição das tabelas Bioma e BiomaMundo que representam, respectivamente, uma "sala" e o relacionamento n-n entre Bioma e Mundo. Além disso, foi atualizado que toda tabela Instância (InstanciaPC, InstanciaNPC, InstanciaColocavel) perderam as colunas x, y e z (antigo sistema de coordenadas) e ganharam a coluna idBioma. Dessa forma, cada Instância possui as colunas idBioma e idMundo, sendo chave primária composta para BiomaMundo, sendo possível localizar cada instância.
 </p>
 
 # Histórico de Versão
@@ -41,3 +50,4 @@ A versão 2.2 trouxe modificações significativas na estrutura da tabela de ite
 | 2.0 | 23/10/2023 | Cria versão 2 | [Luis Bruno](https://github.com/lbrunofidelis) |
 | 2.1 | 28/10/2023 | Cria versão 2.1 | [Luis Bruno](https://github.com/lbrunofidelis) |
 | 2.2 | 30/10/2023 | Cria versão 2.2 | [Levi Queiroz](https://github.com/LeviQ27) [Luis Bruno](https://github.com/lbrunofidelis) [Andre Goretti](https://github.com/AGoretti) |
+| 3.0 | 16/11/2023 | Cria versão 3 | [Luis Bruno](https://github.com/lbrunofidelis) |
