@@ -21,7 +21,7 @@ INSERT INTO TipoMundo (nome, quantidadeBiomas) VALUES ('Small', 20),
        ('Medium', 40),
        ('Large', 60),
        ('Huge', 100);
-
+	   
 SELECT * FROM TipoMundo;
 
 -- Mundo
@@ -74,10 +74,10 @@ INSERT INTO Personagem (nome, descricao, vida) VALUES ('Wilson', 'Cientista', 15
 SELECT * FROM Personagem;
 
 -- PersonagemJogavel
-INSERT INTO PersonagemJogavel (idComidaFavorita, idPersonagem, sanidade, fome) VALUES (1, 1, 100, 150),
-(2, 2, 80, 140),
-(3, 3, 120, 160),
-(4, 4, 90, 130);
+INSERT INTO PersonagemJogavel (idPersonagem, sanidade, fome) VALUES (1, 100, 150),
+(2, 80, 140),
+(3, 120, 160),
+(4, 90, 130);
 
 SELECT * FROM PersonagemJogavel;
 
@@ -145,22 +145,22 @@ SELECT * FROM DialogoPersonagem;
 
 -- InstanciaNpc
 INSERT INTO InstanciaNpc (idNpc, idMundo, idBioma, vidaAtual) VALUES
-(1, 1, 1, 90),
-(1, 1, 1, 85),
-(1, 1, 2, 88),
-(1, 1, 2, 92),
-(1, 1, 3, 87),
-(2, 1, 4, 80),
-(2, 1, 5, 82),
-(2, 1, 6, 81),
-(2, 1, 3, 84),
-(2, 1, 3, 83),
-(3, 1, 4, 70),
-(3, 1, 5, 72),
-(3, 2, 1, 71),
-(3, 2, 1, 74),
-(3, 2, 2, 73),
-(4, 2, 2, 1350); -- Criar check para que o HPAtual não seja maior que o Hp total
+(5, 1, 1, 90),
+(5, 1, 1, 85),
+(5, 1, 2, 88),
+(5, 1, 2, 92),
+(6, 1, 3, 87),
+(6, 1, 4, 80),
+(7, 1, 5, 82),
+(7, 1, 6, 81),
+(7, 1, 3, 84),
+(7, 1, 3, 83),
+(7, 1, 4, 70),
+(7, 1, 5, 72),
+(5, 2, 1, 71),
+(5, 2, 1, 74),
+(9, 2, 2, 73),
+(8, 2, 2, 1350); -- Criar check para que o HPAtual não seja maior que o Hp total
 
 SELECT * FROM InstanciaNpc;
 
@@ -238,12 +238,13 @@ INSERT INTO Receita (itemReceita, item1, item2, item3, quantidade1, quantidade2,
 SELECT * FROM Receita;
 
 -- Especialiazações de Items: Equipamento
-INSERT INTO Equipamento (idItem, parteCorpo, durabilidade, protecao) VALUES
-    (14, 2, 50, 15), -- Armadura de Madeira (Peito)
-    (15, 3, 45, 0),  -- Lança de Batalha (mão)
-    (16, 3, 30, 0), -- Bastão Apresuntado (Mão)
-    (17, 1, 35, 30), -- Capacete Trabalhado (cabeça)
-    (18, 4, 40, 15); -- Bota de Pele (pés)
+INSERT INTO Equipamento (idItem, parteCorpo, durabilidade, protecao, aumentaInventario) VALUES
+    (14, 2, 50, 15, 0), -- Armadura de Madeira (Peito)
+    (15, 3, 45, 0, 0),  -- Lança de Batalha (mão)
+    (16, 3, 30, 0, 0), -- Bastão Apresuntado (Mão)
+    (17, 1, 35, 30, 0), -- Capacete Trabalhado (cabeça)
+    (18, 4, 40, 15, 0); -- Bota de Pele (pés)
+    
 
 SELECT * FROM Equipamento;
 
@@ -313,16 +314,16 @@ INSERT INTO Inventario (idItem, idInstanciaPc, quantidade) VALUES
 SELECT * FROM Inventario;
 
 -- Habilidade
-INSERT INTO Habilidade (idHabPreReq, idItemGerado, nome, descricao, eOfensiva, dano, casting) VALUES 
-(NULL, NULL, 'Longevidade da Tocha', 'Aumenta a duração da tocha', false, NULL, 0),
-(1, NULL, 'Longevidade da Tocha II', 'Aumenta a duração da tocha (maior que nível 1)', false, NULL, 0),
-(2, NULL, 'Longevidade da Tocha III', 'Aumenta a duração da tocha (maior que nível 2)', false, NULL, 0),
+INSERT INTO Habilidade (idHabPreReq, idItemGerado, nome, descricao, eOfensiva, dano) VALUES 
+(NULL, NULL, 'Longevidade da Tocha', 'Aumenta a duração da tocha', false, NULL),
+(1, NULL, 'Longevidade da Tocha II', 'Aumenta a duração da tocha (maior que nível 1)', false, NULL),
+(2, NULL, 'Longevidade da Tocha III', 'Aumenta a duração da tocha (maior que nível 2)', false, NULL),
 
-(NULL, NULL, 'Lenhador', 'Aumenta a coleta de madeira', false, NULL, 0),
-(4, 1, 'Lenhador II', 'Aumenta a coleta de madeira (maior que nível 2)', false, NULL, 0),
+(NULL, NULL, 'Lenhador', 'Aumenta a coleta de madeira', false, NULL),
+(4, 1, 'Lenhador II', 'Aumenta a coleta de madeira (maior que nível 2)', false, NULL),
 
-(NULL, NULL, 'Estocada', 'Perfura o inimigo', true, 30, 0.5),
-(6, NULL, 'Estocada II', 'Perfura o inimigo (mais dano que nível 1)', true, 60, 0.8);
+(NULL, NULL, 'Estocada', 'Perfura o inimigo', true, 30),
+(6, NULL, 'Estocada II', 'Perfura o inimigo (mais dano que nível 1)', true, 60);
 
 SELECT * FROM HABILIDADE;
 
@@ -336,8 +337,8 @@ ALTER SEQUENCE Mundo_id_seq RESTART WITH 1;
 ALTER SEQUENCE Bioma_id_seq RESTART WITH 1;
 ALTER SEQUENCE Personagem_id_seq RESTART WITH 1;
 ALTER SEQUENCE PersonagemUsuario_id_seq RESTART WITH 1;
-ALTER SEQUENCE PersonagemJogavel_id_seq RESTART WITH 1;
-ALTER SEQUENCE Npc_id_seq RESTART WITH 1;
+ALTER SEQUENCE PersonagemJogavel_idPersonagem_seq RESTART WITH 1;
+ALTER SEQUENCE Npc_idPersonagem_seq RESTART WITH 1;
 ALTER SEQUENCE DialogoPersonagem_id_seq RESTART WITH 1;
 ALTER SEQUENCE Dialogo_id_seq RESTART WITH 1;
 ALTER SEQUENCE InstanciaNpc_id_seq RESTART WITH 1;

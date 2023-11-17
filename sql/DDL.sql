@@ -59,12 +59,9 @@ CREATE TABLE Personagem (
 );
 
 CREATE TABLE PersonagemJogavel (
-    id SERIAL PRIMARY KEY,
-    idComidaFavorita INTEGER NOT NULL,
-    idPersonagem INTEGER NOT NULL,
+    idPersonagem SERIAL PRIMARY KEY,
     sanidade SMALLINT NOT NULL,
     fome SMALLINT NOT NULL,
-	-- FOREIGN KEY (idComidaFavorita) REFERENCES Consumivel (id),
 	FOREIGN KEY (idPersonagem) REFERENCES Personagem (id)
 );
 
@@ -73,14 +70,13 @@ CREATE TABLE PersonagemUsuario (
 	nomeUsuario VARCHAR NOT NULL,
 	idPersonagemJogavel INTEGER NOT NULL,
 	FOREIGN KEY (nomeUsuario) REFERENCES Usuario (nomeUsuario),
-	FOREIGN KEY (idPersonagemJogavel) REFERENCES PersonagemJogavel (id)
+	FOREIGN KEY (idPersonagemJogavel) REFERENCES PersonagemJogavel (idPersonagem)
 );
 
 CREATE TYPE "TipoNpc" AS ENUM ('N', 'P', 'H'); -- Neutro, Passivo, Hostil
 
 CREATE TABLE Npc (
-	id SERIAL PRIMARY KEY,
-	idPersonagem INTEGER NOT NULL,
+	idPersonagem SERIAL PRIMARY KEY,
 	tipoNpc "TipoNpc" NOT NULL,
 	eBoss BOOLEAN NOT NULL,
 	FOREIGN KEY (idPersonagem) REFERENCES Personagem (id)
@@ -110,7 +106,7 @@ CREATE TABLE InstanciaNpc (
 	idMundo INTEGER NOT NULL,
     idBioma INTEGER NOT NULL,
     vidaAtual SMALLINT NOT NULL,
-    FOREIGN KEY (idNpc) REFERENCES Npc (id),
+    FOREIGN KEY (idNpc) REFERENCES Npc (idPersonagem),
 	FOREIGN KEY (idMundo, idBioma) REFERENCES BiomaMundo (idMundo, idBioma)
 );
 
@@ -124,7 +120,7 @@ CREATE TABLE InstanciaPC (
     sanidadeAtual SMALLINT NOT NULL,
     modoFantasma BOOLEAN NOT NULL,
 		tamanhoInventario SMALLINT NOT NULL DEFAULT(10),
-    FOREIGN KEY (idPersonagemJogavel) REFERENCES PersonagemJogavel (id),
+    FOREIGN KEY (idPersonagemJogavel) REFERENCES PersonagemJogavel (idPersonagem),
 	FOREIGN KEY (idMundo, idBioma) REFERENCES BiomaMundo (idMundo, idBioma)
 );
 
@@ -154,7 +150,6 @@ CREATE TABLE Habilidade (
     descricao VARCHAR NOT NULL,
     eOfensiva BOOLEAN NOT NULL,
     dano INTEGER,
-    casting NUMERIC NOT NULL,
     FOREIGN KEY (idHabPreReq) REFERENCES Habilidade (id),
     FOREIGN KEY (idItemGerado) REFERENCES Item (id)
 );
@@ -179,6 +174,7 @@ CREATE TABLE Equipamento (
     parteCorpo SMALLINT NOT NULL,
     durabilidade SMALLINT NOT NULL,
     protecao INTEGER NOT NULL,
+    aumentaInventario SMALLINT NOT NULL DEFAULT(0),
     FOREIGN KEY (idItem) REFERENCES Item (id)
 );
 
