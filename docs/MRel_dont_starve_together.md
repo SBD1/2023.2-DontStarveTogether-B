@@ -41,6 +41,15 @@ A versão 2.2 trouxe modificações significativas na estrutura da tabela de ite
 A versão 3 traz as modificações do banco voltadas para o sistema de Salas, ao invés de coordenadas, como sugerido para melhor dinâmica no desenvolvimento do jogo. Essa versão contempla a adição das tabelas Bioma e BiomaMundo que representam, respectivamente, uma "sala" e o relacionamento n-n entre Bioma e Mundo. Além disso, foi atualizado que toda tabela Instância (InstanciaPC, InstanciaNPC, InstanciaColocavel) perderam as colunas x, y e z (antigo sistema de coordenadas) e ganharam a coluna idBioma. Dessa forma, cada Instância possui as colunas idBioma e idMundo, sendo chave primária composta para BiomaMundo, sendo possível localizar cada instância.
 </p>
 
+### Versão 3.1
+<div align="center">
+  <img src="../assets/Modelo-Relacionalv3.1.png" aly="Modelo relacional v3.1" style="width: 900px">
+</div>
+
+<p align="justify"> 
+A versão 3.1 aborda a normalização das tabelas de itens e de personagens, com a remoção do id único das tabelas e adicionando o id da tabela "pai" da espcialização como PK/FK. Além disso, faz correção nas ligações entre tabelas de instância para BiomaMundo.
+</p>
+
 # Histórico de Versão
 
 | Versão | Data | Descrição | Autor |
@@ -51,3 +60,4 @@ A versão 3 traz as modificações do banco voltadas para o sistema de Salas, ao
 | 2.1 | 28/10/2023 | Cria versão 2.1 | [Luis Bruno](https://github.com/lbrunofidelis) |
 | 2.2 | 30/10/2023 | Cria versão 2.2 | [Levi Queiroz](https://github.com/LeviQ27) [Luis Bruno](https://github.com/lbrunofidelis) [Andre Goretti](https://github.com/AGoretti) |
 | 3.0 | 16/11/2023 | Cria versão 3 | [Luis Bruno](https://github.com/lbrunofidelis) |
+| 3.1 | 17/11/2023 | Atualiza versão 3 (normalização dos itens e instâncias) | [Luis Bruno](https://github.com/lbrunofidelis) |
