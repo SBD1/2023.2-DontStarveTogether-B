@@ -134,24 +134,20 @@ CREATE TABLE Alianca (
 
 CREATE TABLE Item (
     id SERIAL PRIMARY KEY,
-    referenciaItem INTEGER,
     itemReceita INTEGER,
     nome VARCHAR NOT NULL,
     descricao VARCHAR NOT NULL,
-    FOREIGN KEY (referenciaItem) REFERENCES Item (id),
     FOREIGN KEY (itemReceita) REFERENCES Item (id)
 );
 
 CREATE TABLE Habilidade (
     id SERIAL PRIMARY KEY,
     idHabPreReq INTEGER,
-    idItemGerado INTEGER,
     nome VARCHAR NOT NULL,
     descricao VARCHAR NOT NULL,
     eOfensiva BOOLEAN NOT NULL,
     dano INTEGER,
-    FOREIGN KEY (idHabPreReq) REFERENCES Habilidade (id),
-    FOREIGN KEY (idItemGerado) REFERENCES Item (id)
+    FOREIGN KEY (idHabPreReq) REFERENCES Habilidade (id)
 );
 
 CREATE TABLE Receita (
@@ -170,7 +166,7 @@ CREATE TABLE Receita (
 
 CREATE TABLE Equipamento (
     idItem SERIAL PRIMARY KEY,
-    parteCorpo SMALLINT NOT NULL,
+    parteCorpo SMALLINT NOT NULL, -- cabeça: 1, peito: 2, mão: 3, corpo: 4
     durabilidade SMALLINT NOT NULL,
     protecao INTEGER NOT NULL,
     aumentaInventario SMALLINT NOT NULL DEFAULT(0),
@@ -211,7 +207,7 @@ CREATE TABLE InstanciaColocavel (
   idBioma INTEGER NOT NULL,
 	durabilidadeAtual SMALLINT NOT NULL,
 	FOREIGN KEY (idColocavel) REFERENCES Colocavel (idItem),
-	FOREIGN KEY (idMundo, idBioma) REFERENCES BiomaMundo (idMundo, idBioma)
+FOREIGN KEY (idMundo, idBioma) REFERENCES BiomaMundo (idMundo, idBioma)
 );
 
 CREATE TABLE Inventario (

@@ -203,14 +203,16 @@ INSERT INTO Item (nome, descricao) VALUES
   ('Lança de Batalha', 'Uma lança afiada e resistente'),
   ('Bastão Apresuntado', 'Um bastão feito de pele de animal'),
   ('Capacete Trabalhado', 'Um capacete resistente feito de ferro e madeira.'),
-  ('Bota de Pele', 'Uma bota quente e confortável feita de pele de animal.'); -- id 18
+  ('Bota de Pele', 'Uma bota quente e confortável feita de pele de animal.'),
+  ('Mochila pequena', 'Uma mochila que adiciona 5 espaços no seu inventário.'),
+  ('Tocha', 'Uma tocha para iluminar suas noites escuras - ou atear fogo em algo/alguém'); -- id 20
 
 --Item Colocaveis
 INSERT INTO Item (nome, descricao) VALUES
   ('Cerca de Madeira', 'Uma cerca simples feita de tábuas de madeira'),
   ('Parede de Pedra', 'Uma parede sólida feita de pedras'),
   ('Tapete', 'Um tapete macio e aconchegante de pele de animal.'),
-  ('Mesa de Trabalho', 'Uma mesa de trabalho robusta de madeira e pedra'); -- id 22
+  ('Mesa de Trabalho', 'Uma mesa de trabalho robusta de madeira e pedra'); -- id 24
 
 SELECT * FROM ITEM;
 
@@ -243,23 +245,26 @@ INSERT INTO Equipamento (idItem, parteCorpo, durabilidade, protecao, aumentaInve
     (15, 3, 45, 0, 0),  -- Lança de Batalha (mão)
     (16, 3, 30, 0, 0), -- Bastão Apresuntado (Mão)
     (17, 1, 35, 30, 0), -- Capacete Trabalhado (cabeça)
-    (18, 4, 40, 15, 0); -- Bota de Pele (pés)
-    
+    (18, 4, 40, 15, 0),  -- Bota de Pele (pés)
+    (19, 2, 100, 0, 5),  -- Mochila pequena (peito)
+    (20, 3, 100, 0, 0);  -- Tocha (mão)
 
 SELECT * FROM Equipamento;
 
 -- EquipamentoPersonagem
 INSERT INTO EquipamentoPersonagem (idInstanciaPc, idequipamento, durabilidadeAtual) VALUES
-		(1, 1, 20),
-		(2, 1, 13),
-		(3, 1, 4),
-		(1, 2, 40),
-		(2, 3, 25),
-		(3, 2, 30),
-		(1, 5, 10),
-		(2, 5, 2);
+		(1, 14, 20),
+		(2, 15, 13),
+		(3, 16, 4),
+		(1, 17, 40),
+		(2, 18, 25),
+		(3, 19, 30),
+		(1, 20, 10),
+		(2, 14, 2);
 
--- Especializações Itens: Consumivel
+SELECT * FROM EquipamentoPersonagem;
+
+-- Especializações Itens: Consumivel -- Criar instancia consumivel e adicionar coluna tempo (em dias)
 INSERT INTO Consumivel (idItem, vida, sanidade, fome, tempoApodrecimento) VALUES 
 	  (11, 12, 5, 20, 3),
 		(12, 18, 10, 26, 2),
@@ -269,25 +274,26 @@ SELECT * FROM Consumivel;
 
 -- Colocavel
 INSERT INTO Colocavel (idItem, tamanho, temColisao, durabilidade, eEstacaoCraft) VALUES
-    (19, 1, true, 4, false),  -- cerca
-		(20, 1, true, 6, false),  -- parede de pedra
-		(21, 4, false, 3, false), -- Tapete
-		(22, 2, true, 3, true); -- Mesa craft
+    (21, 1, true, 4, false),  -- cerca
+		(22, 1, true, 6, false),  -- parede de pedra
+		(23, 4, false, 3, false), -- Tapete
+		(24, 2, true, 3, true); -- Mesa craft
 		
 SELECT * FROM Colocavel;
 
 -- InstanciaColocavel
 INSERT INTO InstanciaColocavel (idColocavel, idMundo, idBioma, durabilidadeAtual) VALUES
-		(2, 1, 1, 6),
-		(2, 1, 1, 6),
-		(2, 1, 1, 6),
-		(2, 1, 1, 6),
-		(2, 1, 2, 6),
-		(2, 1, 2, 6),
-		(2, 1, 2, 6),
-		(2, 1, 2, 6),
-		(3, 1, 2, 3),
-		(4, 1, 2, 3);
+		(21, 1, 1, 6),
+		(21, 1, 1, 6),
+		(21, 1, 1, 6),
+		(21, 1, 1, 6),
+		(21, 1, 2, 6),
+		(21, 1, 2, 6),
+		(21, 1, 2, 6),
+		(21, 1, 2, 6),
+		(22, 1, 2, 3),
+		(23, 1, 2, 3),
+		(24, 1, 3, 6);
 
 SELECT * FROM InstanciaColocavel;
 
@@ -314,16 +320,12 @@ INSERT INTO Inventario (idItem, idInstanciaPc, quantidade) VALUES
 SELECT * FROM Inventario;
 
 -- Habilidade
-INSERT INTO Habilidade (idHabPreReq, idItemGerado, nome, descricao, eOfensiva, dano) VALUES 
-(NULL, NULL, 'Longevidade da Tocha', 'Aumenta a duração da tocha', false, NULL),
-(1, NULL, 'Longevidade da Tocha II', 'Aumenta a duração da tocha (maior que nível 1)', false, NULL),
-(2, NULL, 'Longevidade da Tocha III', 'Aumenta a duração da tocha (maior que nível 2)', false, NULL),
-
-(NULL, NULL, 'Lenhador', 'Aumenta a coleta de madeira', false, NULL),
-(4, 1, 'Lenhador II', 'Aumenta a coleta de madeira (maior que nível 2)', false, NULL),
-
-(NULL, NULL, 'Estocada', 'Perfura o inimigo', true, 30),
-(6, NULL, 'Estocada II', 'Perfura o inimigo (mais dano que nível 1)', true, 60);
+INSERT INTO Habilidade (idHabPreReq, nome, descricao, eOfensiva, dano) VALUES 
+(NULL, 'Longevidade da Tocha', 'Aumenta a duração da tocha', false, NULL),
+(1, 'Longevidade da Tocha II', 'Aumenta a duração da tocha (maior que nível 1)', false, NULL),
+(2, 'Longevidade da Tocha III', 'Aumenta a duração da tocha (maior que nível 2)', false, NULL),
+(NULL, 'Estocada', 'Perfura o inimigo', true, 30),
+(4, 'Estocada II', 'Perfura o inimigo (mais dano que nível 1)', true, 60);
 
 SELECT * FROM HABILIDADE;
 
@@ -332,7 +334,7 @@ COMMIT;
 BEGIN TRANSACTION;
 
 -- Alters - p/ resetar os ids
-ALTER SEQUENCE TipoMundo_id_seq RESTART WITH 1;
+ALTER SEQUENCE tipomundo_id_seq RESTART WITH 1;
 ALTER SEQUENCE Mundo_id_seq RESTART WITH 1;
 ALTER SEQUENCE Bioma_id_seq RESTART WITH 1;
 ALTER SEQUENCE Personagem_id_seq RESTART WITH 1;
