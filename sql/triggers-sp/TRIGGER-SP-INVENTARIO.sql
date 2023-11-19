@@ -43,3 +43,13 @@ CREATE TRIGGER t_atualiza_inventario
 BEFORE INSERT ON Inventario
 FOR EACH ROW
 EXECUTE PROCEDURE atualiza_inventario();
+
+-- Testes das triggers/sp de inventário:
+INSERT INTO Inventario (iditem, idinstanciapc, quantidade)
+VALUES
+    (3, 2, 1),
+    (4, 2, 3),
+    (5, 2, 8),
+    (6, 2, 1),
+    (9, 2, 2);
+Select * From Inventario WHERE idinstanciapc = 2 ORDER BY Iditem;
