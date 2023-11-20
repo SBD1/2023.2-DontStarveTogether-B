@@ -33,11 +33,10 @@ O objetivo deste documento é descrever o dicionário de dados do banco de dados
 | tipo | Tipo de mundo | int |  | FK, Not Null |
 | idUsuario | Identificador do usuário que criou o mundo | varchar |  | FK, Not Null |
 | nome | Nome do mundo | varchar |  | Not Null |
-| estacao | Indica a estação do ano que está no mundo | enum |("Autumn","Winter", "Spring", "Summer") Default "Autumn"| Not Null |
+| estacao | Indica a estação do ano que está no mundo | enum |("Autumn","Winter", "Spring", "Summer") | Not Null, Default "Autumn" |
 | temEstrada | Define se o mundo deve gerar estradas ou não | boolean |  | Not Null |
-| diaAtual | Número do dia atual no mundo | int |  | Default 0| Not Null |
+| diaAtual | Número do dia atual no mundo | int |  | Not Null, Default 0 |
 
-## Tabela Tipo Mundo
 
 | Tabela | Descrição | Observações |
 |:----:|:-----:|:-----:|
@@ -132,7 +131,7 @@ O objetivo deste documento é descrever o dicionário de dados do banco de dados
 | Nome | Descrição | Tipo de Dado | Tamanho | Restrições de Domínio |
 | :------: | :------: | :------: | :------: | :------: |
 | idPersonagem | Identificador do personagem | int |  | PK, FK |
-| tipoNpc | Tipo do NPC | enum |  | Not Null |
+| tipoNpc | Tipo do NPC | enum | ("N", "P", "H") | Not Null |
 | eBoss | Indica se o NPC é um boss | boolean |  | Not Null |
 
 ## Tabela Instancia Personagem Jogável
@@ -153,7 +152,7 @@ O objetivo deste documento é descrever o dicionário de dados do banco de dados
 | fomeAtual | Nível de fome atual do personagem jogável | smallint |  | Not Null |
 | sanidadeAtual | Nível de sanidade atual do personagem jogável | smallint |  | Not Null |
 | modoFantasma | Indica se um personagem está no modo fantasma ou não (morto) | boolean |  | Not Null |
-| tamanhoInventario | Indica o tamanho do inventário da instância | smallint |  | Default 10| Not Null |
+| tamanhoInventario | Indica o tamanho do inventário da instância | smallint |  | Not Null, Default 10 |
 
 ## Tabela Instancia Non Player Character
 
@@ -185,7 +184,7 @@ O objetivo deste documento é descrever o dicionário de dados do banco de dados
 | parteCorpo | Parte do corpo na qual o equipamento é equipado (Cabeça, Corpo e Mão) | smallint |  | Not Null |
 | durabilidade | Quantidade de durabilidade do equipamento | float |  | Not Null |
 | protecao | Nível de proteção (em %) do equipamento| int |  | Not Null |
-| aumentaInventario | Quantidade de aumento no inventário proporcionado pelo equipamento | smallint |  | Default 0| Not Null |
+| aumentaInventario | Quantidade de aumento no inventário proporcionado pelo equipamento | smallint |  | Not Null, Default 0 |
 
 
 ## Tabela EquipamentoPersonagem
@@ -353,9 +352,9 @@ O objetivo deste documento é descrever o dicionário de dados do banco de dados
 | :------: | :------: | :------: | :------: | :------: |
 | idItem | Identificador do item colocável | serial |  | PK, FK |
 | tamanho | Tamanho do item colocável | smallint |  | Not Null |
-| temColisao | Indica se o item colocável tem colisão | boolean |  | Default true| Not Null |
+| temColisao | Indica se o item colocável tem colisão | boolean |  | Not Null, Default true |
 | durabilidade | Durabilidade do item colocável | smallint |  | |
-| eEstacaoCraft | Indica se o item colocável é uma estação de craft | boolean |  | Default false| Not Null |
+| eEstacaoCraft | Indica se o item colocável é uma estação de craft | boolean |  | Not Null, Default false |
 
 ## Tabela InstanciaColocavel
 
