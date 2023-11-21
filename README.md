@@ -22,11 +22,11 @@ Este repositório contém informações relacionadas ao projeto de criação des
  - [DML](https://github.com/SBD1/2023.2-DontStarveTogether/blob/main/sql/DML.sql)
  - [DQL](https://github.com/SBD1/2023.2-DontStarveTogether/blob/main/sql/DQL.sql)
  - [Algoritmo Relacional](./docs/Algebra_Relacional_dont_starve_together.md)
- - [Formas Normais]()
+ - [Formas Normais](https://github.com/SBD1/2023.2-DontStarveTogether/blob/main/docs/Dependencias_funcionais_normalizacao.md)
  - [Apresentação](https://www.youtube.com/watch?v=KvMzjG1tIjk)
 
 ### Módulo 3
-- [Triggers/Stored Procedures](#)
+- [Triggers/Stored Procedures](https://github.com/SBD1/2023.2-DontStarveTogether/tree/main/sql/triggers-sp)
 - [Views](#)
 - [Permissões](#)
 - [Jogo](#)
@@ -39,9 +39,10 @@ Este repositório contém informações relacionadas ao projeto de criação des
 
 # Histórico de Versão
 
-| Versão | Data | Descrição | Autor |
-| :-----: | :------: | ------- | -------- |
-| 1.0 | 02/10/2023 | Criação do Documento | [Levi Queiroz](https://github.com/LeviQ27) [Luis Bruno](https://github.com/lbrunofidelis) [Andre Goretti](https://github.com/AGoretti) |
-| 1.1 | 23/10/2023 | Cria tópicos e links p/ documentos | [Luis Bruno](https://github.com/lbrunofidelis) |
-| 1.2 | 29/10/2023 | Atualiza links p/ documentos | [Yago Amin](https://github.com/Yagoas) |
+| Versão |    Data    | Descrição                          | Autor                                                                                                                                  |
+| :----: | :--------: | ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+|  1.0   | 02/10/2023 | Criação do Documento               | [Levi Queiroz](https://github.com/LeviQ27) [Luis Bruno](https://github.com/lbrunofidelis) [Andre Goretti](https://github.com/AGoretti) |
+|  1.1   | 23/10/2023 | Cria tópicos e links p/ documentos | [Luis Bruno](https://github.com/lbrunofidelis)                                                                                         |
+|  1.2   | 29/10/2023 | Atualiza links p/ documentos       | [Yago Amin](https://github.com/Yagoas)                                                                                                 |
+|  1.3   | 21/11/2023 | Atualiza links p/ Triggers/SP e Normalização      | [Luis Bruno](https://github.com/lbrunofidelis)                                                                                         |
 

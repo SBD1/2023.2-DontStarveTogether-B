@@ -77,8 +77,10 @@ CREATE TYPE "TipoNpc" AS ENUM ('N', 'P', 'H'); -- Neutro, Passivo, Hostil
 
 CREATE TABLE Npc (
 	idPersonagem SERIAL PRIMARY KEY,
+  itemDropado INTEGER,
 	tipoNpc "TipoNpc" NOT NULL,
 	eBoss BOOLEAN NOT NULL,
+  FOREIGN KEY (itemDropado) REFERENCES Item (id),
 	FOREIGN KEY (idPersonagem) REFERENCES Personagem (id)
 );
 
@@ -152,6 +154,7 @@ CREATE TABLE Habilidade (
 
 CREATE TABLE Receita (
     itemReceita INTEGER PRIMARY KEY,
+    estacaoCraft INTEGER,
     item1 INTEGER,
     item2 INTEGER,
     item3 INTEGER,
@@ -159,6 +162,7 @@ CREATE TABLE Receita (
     quantidade2 SMALLINT,
     quantidade3 SMALLINT,
     FOREIGN KEY (itemReceita) REFERENCES Item (id),
+    FOREIGN KEY (estacaoCraft) REFERENCES Item (id),
     FOREIGN KEY (item1) REFERENCES Item (id),
     FOREIGN KEY (item2) REFERENCES Item (id),
     FOREIGN KEY (item3) REFERENCES Item (id)
@@ -169,6 +173,7 @@ CREATE TABLE Equipamento (
     parteCorpo SMALLINT NOT NULL, -- cabeça: 1, peito: 2, mão: 3, corpo: 4
     durabilidade SMALLINT NOT NULL,
     protecao INTEGER NOT NULL,
+    ataque SMALLINT NOT NULL,
     aumentaInventario SMALLINT NOT NULL DEFAULT(0),
     FOREIGN KEY (idItem) REFERENCES Item (id) 
 );

@@ -205,7 +205,7 @@ INSERT INTO Item (nome, descricao) VALUES
   ('Toupeira assada', 'Uma toupeira quentinha assada na brasa'),
   ('Ave morta', 'Uma ave abatida, pronta para preparo'),
   ('Ave assada', 'Uma ave quentinha assada na brasa'),
-  ('Cozido de Carne', 'Um prato saboroso de carne de animal'),
+  ('Cozido de Carnes', 'Um prato saboroso de carne de animal'),
   ('Salada de Folhas', 'Uma salada refrescante de folhas verdes'),
   ('Sopa de Pele', 'Uma sopa quentinha feita com pele de animal'); -- id 25
 
@@ -227,45 +227,49 @@ INSERT INTO Item (nome, descricao) VALUES
   ('Fogueira', 'Uma fogueira acochegante, muito útil para noites frias e escuras'),
   ('Cerca de Madeira', 'Uma cerca simples feita de tábuas de madeira'),
   ('Tapete', 'Um tapete macio e aconchegante de pele de animal.'),
-  ('Panela de barro', '"Panela velha é a que faz comida boa"'),
+  ('Panela velha', '"Panela velha é a que faz comida boa"'),
   ('Mesa de Trabalho', 'Uma mesa de trabalho robusta de madeira e pedra'); -- id 40
 
 SELECT * FROM ITEM;
 
 -- Receitas 1 item
-INSERT INTO Receita (itemReceita, item1, quantidade1) VALUES
-  (15, 4, 3),  -- Corda (3x gramas) - sem estação
-  (18, 17, 1),  -- Coelho assado (1x coelho morto) - fogueira
-  (20, 19, 1),  -- Toupeira assada (1x toupeira morta) - fogueira
-  (22, 21, 1),  -- Ave assada (1x ave morta) - fogueira
-  (29, 1, 10), -- Armadura de madeira (10x madeira) - mesa de trabalho
-  (16, 11, 15), -- Bastao apresuntado (12x pele de animal) - sem estação
-  (33, 11, 8), -- Botas de pele (8x pele de animal) - sem estação
-  (21, 11, 5);  -- tapete (10x pele de animal) - mesa de trabalho
+INSERT INTO Receita (itemReceita, estacaoCraft, item1, quantidade1) VALUES
+  (15, NULL, 4, 3),  -- Corda (3x gramas) - sem estação
+  (16, NULL, 11, 15), -- Bastao apresuntado (12x pele de animal) - sem estação
+  (18, 36, 17, 1),  -- Coelho assado (1x coelho morto) - fogueira
+  (20, 36, 19, 1),  -- Toupeira assada (1x toupeira morta) - fogueira
+  (21, 40, 11, 5),  -- tapete (10x pele de animal) - mesa de trabalho
+  (22, 36, 21, 1),  -- Ave assada (1x ave morta) - fogueira
+  (29, 40, 1, 10), -- Armadura de madeira (10x madeira) - mesa de trabalho
+  (33, NULL, 11, 8); -- Botas de pele (8x pele de animal) - sem estação
 
 -- Receitas 2 itens
-INSERT INTO Receita (itemReceita, item1, item2, quantidade1, quantidade2) VALUES
-  (11, 10, 9, 3, 3), -- Cozido de Carne
-  (12, 5, 6, 5, 5),  -- Salada de Folhas
-  (13, 5, 10, 2, 5), -- Sopa de Pele
-  (15, 1, 3, 5, 5),  -- Lanca de batalha
-	(22, 1, 2, 10, 10); -- Mesa de trabalho
+INSERT INTO Receita (itemReceita, estacaoCraft, item1, item2, quantidade1, quantidade2) VALUES
+  (23, 39, 17, 19, 1, 1), -- Cozido de Carnes (1x toupeira morta, 1x coelho morto) - Panela velha
+  (24, 39, 6, 12, 2, 3),  -- Salada de Folhas (2x folha, 3x flor) - Panela velha
+  (25, 39, 17, 25, 1, 1), -- Sopa de Pele (1x coelho morto, 1x pele de animal) - panela velha
+  (30, 40, 5, 8, 5, 3),  -- Lanca de batalha (5x gravetos, 3x minério de ferro) - mesa de trabalho
+	(40, NULL, 1, 9, 8, 2), -- Mesa de trabalho (5x madeira, 2x minério de ferro) - sem estação
+  (39, 40, 8, 7, 2, 5); -- Mesa de trabalho (2x minério de ferro, 5x carvão) - mesa de trabalho
 
 -- Receitas 3 itens
-INSERT INTO Receita (itemReceita, item1, item2, item3, quantidade1, quantidade2, quantidade3) VALUES
-  (17, 1, 3, 8, 2, 3, 3); -- Capacete Trabalhado
+INSERT INTO Receita (itemReceita, estacaoCraft, item1, item2, item3, quantidade1, quantidade2, quantidade3) VALUES
+  (32, 40, 3, 8, 9, 5, 3, 1); -- Capacete Trabalhado (5x flint, 3x minério de ferro, 1x ouro) - mesa de trabalho
   
 SELECT * FROM Receita;
 
 -- Especialiazações de Items: Equipamento
-INSERT INTO Equipamento (idItem, parteCorpo, durabilidade, protecao, aumentaInventario) VALUES
-    (14, 2, 50, 15, 0), -- Armadura de Madeira (Peito)
-    (15, 3, 45, 0, 0),  -- Lança de Batalha (mão)
-    (16, 3, 30, 0, 0), -- Bastão Apresuntado (Mão)
-    (17, 1, 35, 30, 0), -- Capacete Trabalhado (cabeça)
-    (18, 4, 40, 15, 0),  -- Bota de Pele (pés)
-    (19, 2, 100, 0, 5),  -- Mochila pequena (peito)
-    (20, 3, 100, 0, 0);  -- Tocha (mão)
+INSERT INTO Equipamento (idItem, parteCorpo, durabilidade, protecao, ataque, aumentaInventario) VALUES
+    (26, 3, 80, 0, 10, 0), -- Machado (mão)
+    (27, 3, 80, 0, 10, 0),  -- Picareta (mão)
+    (28, 3, 80, 0, 20, 0), -- Espada (Mão)
+    (29, 2, 100, 20, 0, 0), -- Armadura de madeira (peito)
+    (30, 3, 100, 0, 40, 0),  -- Lança de batalha (mão)
+    (31, 3, 100, 0, 30, 0),  -- Bastão Apresuntado (mão)
+    (32, 1, 100, 30, 10, 0),  -- Capacete trabalhado (cabeça)
+    (33, 4, 100, 15, 0, 0),  -- Botas de pele (pés)
+    (34, 2, 100, 0, 0, 5),  -- Mochila (peito)
+    (35, 3, 100, 0, 0, 0);  -- Tocha (mão)
 
 SELECT * FROM Equipamento;
 
