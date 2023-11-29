@@ -16,13 +16,34 @@ O modelo Entidade Relacionamento é um modelo conceitual que repersenta de forma
 
 A versão 2 contempla a atualização de todas as entidades já trabalhadas, ajustes e melhorias de entidades fracas e agregações.
 
+## Versão 3
+
+<div align="center">
+  <img src="../assets/diagrama-entidadev3.png" aly="Diagrama Entidade v3" style="width: 700px">
+</div>
+
+A versão 3 contempla a atualização da notação da generalização de Personagem, as alterações de localização por Sala (Bioma) ao invés de coordenadas, e diversos ajustes sugeridos pela revisão do Prof. Maurício.
+
 ## 1 - Entidades
 
 As entidades presentes no diagrama são:
 
+ - *Usuário*
+ - *Mundo*
+ - *Bioma*
  - *Personagem*
- - *Player Character*
- - *Non Player Character*
+ - *Dialogo*
+ - *Personagem Jogável*
+ - *InstanciaPC*
+ - *NPC*
+ - *InstanciaNpc*
+ - *Habilidade*
+ - *Item*
+ - *Equipamento*
+ - *Inventario*
+ - *Consumível*
+ - *Colocavel*
+ - *InstanciaColocavel*
 
 ## 2 - Atributos
 
@@ -35,4 +56,5 @@ As entidades presentes no diagrama são:
 | Versão | Data | Descrição | Autor |
 | :-----: | :------: | ------- | -------- |
 | 1.0 | 02/10/2023 | Criação do Documento | [Levi Queiroz](https://github.com/LeviQ27) [Luis Bruno](https://github.com/lbrunofidelis) [Andre Goretti](https://github.com/AGoretti) |
-| 1.0 | 12/11/2023 | Atualização do DER | [Luis Bruno](https://github.com/lbrunofidelis) |
+| 2.0 | 12/11/2023 | Atualização do DER | [Luis Bruno](https://github.com/lbrunofidelis) |
+| 3.0 | 28/11/2023 | Atualização do DER | [Luis Bruno](https://github.com/lbrunofidelis) |

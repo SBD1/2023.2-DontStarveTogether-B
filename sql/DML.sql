@@ -1,10 +1,3 @@
--- Criacao: 26/10/2023
--- Autores: Luis Bruno
--- Descrição: Criação dos inserts (DML)
--- Atualizações: 
--- 		- Atualização de acordo com as modificações do DDL
--- 		- Finalização de todos os INSERTS
-
 BEGIN TRANSACTION;
 
 -- Usuario

@@ -22,11 +22,11 @@ Este repositório contém informações relacionadas ao projeto de criação des
  - [DML](https://github.com/SBD1/2023.2-DontStarveTogether/blob/main/sql/DML.sql)
  - [DQL](https://github.com/SBD1/2023.2-DontStarveTogether/blob/main/sql/DQL.sql)
  - [Algoritmo Relacional](./docs/Algebra_Relacional_dont_starve_together.md)
- - [Formas Normais]()
+ - [Formas Normais](./docs/Dependencias_funcionais_normalizacao.md)
  - [Apresentação](https://www.youtube.com/watch?v=KvMzjG1tIjk)
 
 ### Módulo 3
-- [Triggers/Stored Procedures](#)
+- [Triggers/Stored Procedures](https://github.com/SBD1/2023.2-DontStarveTogether/blob/main/sql/triggers-sp)
 - [Views](#)
 - [Permissões](#)
 - [Jogo](#)
