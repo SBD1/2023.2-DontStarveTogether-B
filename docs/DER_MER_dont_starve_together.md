@@ -24,6 +24,14 @@ A versão 2 contempla a atualização de todas as entidades já trabalhadas, aju
 
 A versão 3 contempla a atualização da notação da generalização de Personagem, as alterações de localização por Sala (Bioma) ao invés de coordenadas, e diversos ajustes sugeridos pela revisão do Prof. Maurício.
 
+## Versão 4
+
+<div align="center">
+  <img src="../assets/diagrama-entidadev4.png" aly="Diagrama Entidade v4" style="width: 700px">
+</div>
+
+A versão 4 contempla diversos ajustes como remoção de colunas que não serão utilizadas, a modificação de entidades e a atualização de acordo com estado atual do modelo relacional atual, com o banco e o jogo.
+
 ## 1 - Entidades
 
 As entidades presentes no diagrama são:
@@ -58,3 +66,4 @@ As entidades presentes no diagrama são:
 | 1.0 | 02/10/2023 | Criação do Documento | [Levi Queiroz](https://github.com/LeviQ27) [Luis Bruno](https://github.com/lbrunofidelis) [Andre Goretti](https://github.com/AGoretti) |
 | 2.0 | 12/11/2023 | Atualização do DER | [Luis Bruno](https://github.com/lbrunofidelis) |
 | 3.0 | 28/11/2023 | Atualização do DER | [Luis Bruno](https://github.com/lbrunofidelis) |
+| 4.0 | 02/12/2023 | Atualiza versão 4 | [Luis Bruno](https://github.com/lbrunofidelis) |
