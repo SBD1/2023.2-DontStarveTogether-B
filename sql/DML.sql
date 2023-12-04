@@ -5,27 +5,20 @@ INSERT INTO Usuario (nomeUsuario, nome, email, senha) VALUES ('lukeskywalker', '
 ('darthvader', 'Darth', 'darth@imperio.com', 'souseupai'),
 ('fulano123', 'Fulano Silva', 'fulano@gmail.com', 'senha123'),
 ('carlosroberto', 'Roberto Carlos', 'roberto@gmail.com', 'especialdenatal'),
-('joaodasilva', 'João Silva', 'joao@gmail.com', 'senha123');
+('mauserrbr', 'Mauricio Serrano', 'mauserrbr@gmail.com', 'serranomauricioprof'),
+('teste', 'Usuário Teste', 'teste@gmail.com', '123');
 
 SELECT * FROM Usuario;
 
--- TipoMundo
-INSERT INTO TipoMundo (nome, quantidadeBiomas) VALUES ('Small', 20),
-       ('Medium', 40),
-       ('Large', 60),
-       ('Huge', 100);
-	   
-SELECT * FROM TipoMundo;
-
 -- Mundo
-INSERT INTO Mundo (idUsuario, tipo, nome, estacao, temEstrada)
-VALUES ('lukeskywalker', 1, 'Mundo sem nome', 'Autumn', true),
-       ('darthvader', 2, 'World 2', 'Winter', false),
-       ('fulano123', 3, 'Gameplay da galera', 'Spring', true),
-       ('carlosroberto', 4, 'to sem criatividade', 'Summer', false),
-       ('lukeskywalker', 2, 'unnamed world', 'Winter', true),
-       ('darthvader', 3, 'terraria > dont starve', 'Spring', false),
-       ('fulano123', 4, 'lol > dota', 'Summer', true);
+INSERT INTO Mundo (idUsuario, nome, estacao)
+VALUES ('teste', 'Mundo sem nome', 'Autumn'),
+       ('mauserrbr', 'World 2', 'Winter'),
+       ('fulano123', 'Gameplay da galera', 'Spring'),
+       ('carlosroberto', 'to sem criatividade', 'Summer'),
+       ('lukeskywalker', 'unnamed world', 'Winter'),
+       ('darthvader', 'terraria > dont starve', 'Spring'),
+       ('fulano123', 'lol > dota', 'Summer');
 	  
 SELECT * FROM Mundo;
 
@@ -35,7 +28,7 @@ INSERT INTO Bioma (nome, descricao) VALUES ('Floresta', 'Uma floresta pacífica 
 ('Savana', 'Uma enorme planície com gramado, sem muitos recursos e pouca flora, mas com diversas opções para caça'),
 ('Deserto', 'Um deserto com recursos locais como cactos e plantas secas, e levemente mais quente e seco que Brasília'),
 ('Terra rochosa', 'Um ambiente rochoso e com diversas recompensas em minerais, mas com seres no minimo esquisitos'),
-('Caverna', 'Uma caverna extremamente hostil, com criaturas e recursos nunca explorados. E muitos cogumelos');
+('Caverna', 'Uma caverna extremamente hostil, com criaturas e recursos nunca explorados');
 
 SELECT * FROM Bioma;
 
@@ -49,50 +42,111 @@ INSERT INTO BiomaMundo (idMundo, idBioma) VALUES (1, 1),
 (2, 1),
 (2, 2),
 (2, 3),
-(3, 1);
+(2, 4);
 
 SELECT * FROM BiomaMundo;
 
 -- Personagem
-INSERT INTO Personagem (nome, descricao, vida) VALUES ('Wilson', 'Cientista', 150),
-('Willow', 'Piromaniaca', 150),
-('Wolfgang', 'O bodybuilder', 200),
-('Wendy', 'A doidinha', 150),
-('Spider', 'Uma aranha malvada', 100),
-('Tentáculo', '??', 150),
-('Bee', 'Abelha', 100),
-('Deerclops', 'O brabo Deerclops', 500),
-('Abigail', 'A irmã gêmea da wendy =[', 500);
+INSERT INTO Personagem (nome, descricao, vida, dano) VALUES 
+('Wilson', 'Cientista', 180, 30),  -- id 1
+('Willow', 'Piromaniaca', 180, 30),  -- id 2
+('Wolfgang', 'O bodybuilder', 200, 40),  -- id 3
+('Wendy', 'A doidinha', 150, 20),  -- id 4
+('Spider', 'Uma aranha malvada', 100, 30),  -- id 5
+('Tentáculo', '??', 150, 30),  -- id 6
+('Bee', 'Abelha', 30, 10),  -- id 7
+('Deerclops', 'O brabo Deerclops', 500, 50),  -- id 8
+('Abigail', 'A falecida irmã gêmea da wendy', 500, 25),  -- id 9
+('Pássaro', 'Um pássaro inofensivo', 20, 0),  -- id 10
+('Coelho', 'Um coelho inofensivo', 20, 0),  -- id 11
+('Toupeira', 'Uma toupeira inofensivo', 20, 0);  -- id 12
 
 SELECT * FROM Personagem;
 
 -- PersonagemJogavel
-INSERT INTO PersonagemJogavel (idPersonagem, sanidade, fome) VALUES (1, 100, 150),
-(2, 80, 140),
-(3, 120, 160),
-(4, 90, 130);
+INSERT INTO PersonagemJogavel (idPersonagem, sanidade, fome) VALUES 
+(1, 100, 100),  -- Wilson
+(2, 100, 100),  -- Willow
+(3, 100, 90),  -- Wolfgang
+(4, 90, 100);  -- Wendy
 
 SELECT * FROM PersonagemJogavel;
 
 -- PersonagemUsuario
-INSERT INTO PersonagemUsuario (nomeUsuario, idPersonagemJogavel) VALUES ('fulano123', 1),
-('fulano123', 2),
-('darthvader', 1),
-('darthvader', 2),
-('carlosroberto', 1),
-('carlosroberto', 2),
-('joaodasilva', 3),
-('joaodasilva', 4);
+INSERT INTO PersonagemUsuario (nomeUsuario, idPersonagemJogavel) VALUES 
+('teste', 3),
+('teste', 4),
+('mauserrbr', 3),
+('mauserrbr', 1);
 
 SELECT * FROM PersonagemUsuario;
 
+-- Itens basicos (ids 1 a 15)
+INSERT INTO Item (nome, descricao) VALUES
+  ('Madeira', 'Um pedaço de madeira normal'),  -- 1
+  ('Pedra', 'Uma pedra comum, pode ser usada para construção'), -- 3
+  ('Flint', 'Um fragmento de pedra afiada, ótimo para ferramentas'),  -- 4
+  ('Grama', 'Uma grama comum'),  -- 5
+  ('Graveto', 'Um pequeno graveto'),   -- 6
+  ('Folha', 'Uma folha verde'),     -- 7
+  ('Carvão', 'Carvão de madeira queimada'),   -- 8
+  ('Minério de Ferro', 'Minério de ferro bruto'),
+  ('Ouro', 'Um pequena e valiosa pedra de ouro, utilizado para criações especiais'),   -- 9
+  ('Pena', 'Uma pena de ave'),   -- 10
+  ('Pele de Animal', 'Uma pele de animal selvagem'),   -- 11
+  ('Flor', 'Uma flor de onde as abelhas costumam passar um tempo'),   -- 12
+  ('Cobre', 'Um pequeno pedaço de cobre'),   -- 13
+  ('Fio de cobre', 'Um pequeno e fino pedaço de fio de cobre, utilizado para energia elétrica'),   -- 14
+  ('Corda', 'Um pedaço de corda utilizado em criações especiais.'); --id 15
+
+
+INSERT INTO InstanciaItem (idItem, idMundo, idBioma) VALUES
+(1, 1, 1),
+(1, 1, 1),
+(1, 1, 1),
+(1, 1, 1),
+(1, 1, 1),
+(1, 1, 1),
+(1, 1, 1),
+(1, 1, 1),
+(1, 1, 1),
+(1, 1, 1),
+(2, 1, 1),
+(2, 1, 1),
+(2, 1, 1),
+(2, 1, 1),
+(2, 1, 1),
+(3, 1, 1),
+(3, 1, 1),
+(3, 1, 1),
+(3, 1, 1),
+(3, 1, 1),
+(4, 1, 1),
+(4, 1, 1),
+(4, 1, 1),
+(4, 1, 1),
+(4, 1, 1),
+(5, 1, 1),
+(5, 1, 1),
+(5, 1, 1),
+(5, 1, 1),
+(5, 1, 1),
+(9, 1, 1),
+(9, 1, 1),
+(9, 1, 1);
+
+SELECT * FROM InstanciaItem;
+
 -- Npc
-INSERT INTO Npc (idPersonagem, tipoNpc, eBoss) VALUES
-(5, 'N', false),
-(6, 'P', false),
-(7, 'H', false),
-(8, 'H', true),
-(9, 'P', false);
+INSERT INTO Npc (idPersonagem, itemDropado, tipoNpc, eBoss) VALUES
+(5, NULL, 'H', false),  -- Spider
+(6, NULL, 'H', false),  -- Tentáculo
+(7, NULL, 'N', false),  -- Bee
+(8, NULL, 'H', true),  -- Deerclops
+(9, NULL, 'N', false), -- Abigail
+(10, NULL, 'P', false), -- Pássaro
+(11, NULL, 'P', false), -- Coelho
+(12, NULL, 'P', false); -- Toupeira
 
 SELECT * FROM Npc;
 
@@ -138,56 +192,29 @@ SELECT * FROM DialogoPersonagem;
 
 -- InstanciaNpc
 INSERT INTO InstanciaNpc (idNpc, idMundo, idBioma, vidaAtual) VALUES
-(5, 1, 1, 90),
-(5, 1, 1, 85),
-(5, 1, 2, 88),
-(5, 1, 2, 92),
-(6, 1, 3, 87),
-(6, 1, 4, 80),
-(7, 1, 5, 82),
-(7, 1, 6, 81),
-(7, 1, 3, 84),
-(7, 1, 3, 83),
-(7, 1, 4, 70),
-(7, 1, 5, 72),
-(5, 2, 1, 71),
-(5, 2, 1, 74),
-(9, 2, 2, 73),
-(8, 2, 2, 1350); -- Criar check para que o HPAtual não seja maior que o Hp total
+(10, 1, 1, 20),
+(11, 1, 1, 20),
+(12, 1, 1, 20),
+(5, 1, 2, 50),
+(6, 1, 3, 50),
+(7, 1, 4, 20),
+(7, 1, 4, 20),
+(7, 1, 4, 20); -- Criar check para que o HPAtual não seja maior que o Hp total
 
 SELECT * FROM InstanciaNpc;
 
 -- InstanciaPC
 INSERT INTO InstanciaPC (idPersonagemJogavel, idMundo, idBioma, vidaAtual, fomeAtual, sanidadeAtual, modoFantasma) VALUES
-    (1, 1, 1, 95, 100, 60, false),
-    (2, 1, 1, 20, 80, 15, false),
-    (3, 1, 2, 30, 100, 50, true),
-    (4, 2, 2, 49, 90, 75, false);
+    (3, 1, 1, 100, 90, 100, false),
+    (3, 2, 1, 100, 90, 100, false);
 
 SELECT * FROM InstanciaPC;
 
 -- Alianca
-INSERT INTO Alianca (idInstanciaPc, idInstanciaNpc) VALUES (4, 9), (3, 1);
+-- INSERT INTO Alianca (idInstanciaPc, idInstanciaNpc) VALUES (1, 9), (3, 1);  -- Criar trigger p/ quando instanciar uma Wendy deve instanciar Abigail
 
-SELECT * FROM Alianca;
+-- SELECT * FROM Alianca;
 
--- Itens basicos (ids 1 a 15)
-INSERT INTO Item (nome, descricao) VALUES
-  ('Madeira', 'Um pedaço de madeira normal'),
-  ('Pedra', 'Uma pedra comum, pode ser usada para construção'),
-  ('Flint', 'Um fragmento de pedra afiada, ótimo para ferramentas'),
-  ('Grama', 'Uma grama comum'),
-  ('Graveto', 'Um pequeno graveto'),
-  ('Folha', 'Uma folha verde'),
-  ('Carvão', 'Carvão de madeira queimada'),
-  ('Minério de Ferro', 'Minério de ferro bruto'),
-  ('Ouro', 'Um pequena e valiosa pedra de ouro, utilizado para criações especiais'),
-  ('Pena', 'Uma pena de ave'),
-  ('Pele de Animal', 'Uma pele de animal selvagem'),
-  ('Flor', 'Uma flor de onde as abelhas costumam passar um tempo'),
-  ('Cobre', 'Um pequeno pedaço de cobre'),
-  ('Fio de cobre', 'Um pequeno e fino pedaço de fio de cobre, utilizado para energia elétrica'),
-  ('Corda', 'Um pedaço de corda utilizado em criações especiais.'); --id 15
   
 -- Item Consumiveis (ids 16 a 25)
 INSERT INTO Item (nome, descricao) VALUES
@@ -325,12 +352,7 @@ INSERT INTO Inventario (idItem, idInstanciaPc, quantidade) VALUES
 	(7, 2, 5),
 	(8, 2, 3),
 	(13, 2, 3),
-	(14, 2, 3),
-	
-	(19, 3, 20),
-	(20, 3, 19),
-	(1, 3, 30),
-	(2, 3, 33);
+	(14, 2, 3);
 	
 SELECT * FROM Inventario;
 
@@ -349,7 +371,6 @@ COMMIT;
 BEGIN TRANSACTION;
 
 -- Alters - p/ resetar os ids
-ALTER SEQUENCE tipomundo_id_seq RESTART WITH 1;
 ALTER SEQUENCE Mundo_id_seq RESTART WITH 1;
 ALTER SEQUENCE Bioma_id_seq RESTART WITH 1;
 ALTER SEQUENCE Personagem_id_seq RESTART WITH 1;
@@ -362,12 +383,14 @@ ALTER SEQUENCE InstanciaNpc_id_seq RESTART WITH 1;
 ALTER SEQUENCE InstanciaPC_id_seq RESTART WITH 1;
 ALTER SEQUENCE Alianca_id_seq RESTART WITH 1;
 ALTER SEQUENCE Item_id_seq RESTART WITH 1;
+ALTER SEQUENCE InstanciaItem_id_seq RESTART WITH 1;
 ALTER SEQUENCE Equipamento_idItem_seq RESTART WITH 1;
 ALTER SEQUENCE EquipamentoPersonagem_id_seq RESTART WITH 1;
 ALTER SEQUENCE Colocavel_idItem_seq RESTART WITH 1;
 ALTER SEQUENCE InstanciaColocavel_id_seq RESTART WITH 1;
 ALTER SEQUENCE Consumivel_idItem_seq RESTART WITH 1;
 ALTER SEQUENCE Habilidade_id_seq RESTART WITH 1;
+ALTER SEQUENCE HabilidadePersonagem_id_seq RESTART WITH 1;
 
 -- Drops
 DROP TABLE IF EXISTS Inventario CASCADE;
@@ -392,7 +415,6 @@ DROP TABLE IF EXISTS Personagem CASCADE;
 DROP TABLE IF EXISTS BiomaMundo CASCADE;
 DROP TABLE IF EXISTS Bioma CASCADE;
 DROP TABLE IF EXISTS Mundo CASCADE;
-DROP TABLE IF EXISTS TipoMundo CASCADE;
 DROP TABLE IF EXISTS Usuario CASCADE;
 
 COMMIT;
