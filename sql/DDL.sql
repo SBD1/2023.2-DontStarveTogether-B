@@ -17,24 +17,15 @@ CREATE TABLE Usuario (
 	PRIMARY KEY (nomeUsuario)
 );
 
-CREATE TABLE TipoMundo (
-    id SERIAL PRIMARY KEY,
-    nome VARCHAR NOT NULL,
-    quantidadeBiomas INTEGER NOT NULL
-);
-
 CREATE TYPE "Estacao" AS ENUM ('Autumn', 'Winter', 'Spring', 'Summer');
 
 CREATE TABLE Mundo (
     id SERIAL PRIMARY KEY,
     idUsuario VARCHAR NOT NULL,
-    tipo INTEGER NOT NULL,
     nome VARCHAR NOT NULL,
     estacao "Estacao" DEFAULT 'Autumn' NOT NULL,
-    temEstrada BOOLEAN NOT NULL,
     diaAtual INTEGER NOT NULL DEFAULT(0),
-    FOREIGN KEY (idUsuario) REFERENCES Usuario (nomeUsuario),
-    FOREIGN KEY (tipo) REFERENCES TipoMundo (id)
+    FOREIGN KEY (idUsuario) REFERENCES Usuario (nomeUsuario)
 );
 
 CREATE TABLE Bioma (
@@ -55,7 +46,8 @@ CREATE TABLE Personagem (
     id SERIAL PRIMARY KEY,
     nome VARCHAR NOT NULL,
     descricao VARCHAR NOT NULL,
-    vida SMALLINT NOT NULL
+    vida SMALLINT NOT NULL,
+    dano SMALLINT NOT NULL
 );
 
 CREATE TABLE PersonagemJogavel (
@@ -73,6 +65,21 @@ CREATE TABLE PersonagemUsuario (
 	FOREIGN KEY (idPersonagemJogavel) REFERENCES PersonagemJogavel (idPersonagem)
 );
 
+CREATE TABLE Item (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR NOT NULL,
+    descricao VARCHAR NOT NULL
+);
+
+CREATE TABLE InstanciaItem (
+    id SERIAL PRIMARY KEY,
+    idItem INTEGER NOT NULL,
+    idMundo INTEGER NOT NULL,
+    idBioma INTEGER NOT NULL,
+    FOREIGN KEY (idItem) REFERENCES Item (id),
+    FOREIGN KEY (idMundo, idBioma) REFERENCES BiomaMundo (idMundo, idBioma)
+);
+
 CREATE TYPE "TipoNpc" AS ENUM ('N', 'P', 'H'); -- Neutro, Passivo, Hostil
 
 CREATE TABLE Npc (
@@ -80,7 +87,7 @@ CREATE TABLE Npc (
   itemDropado INTEGER,
 	tipoNpc "TipoNpc" NOT NULL,
 	eBoss BOOLEAN NOT NULL,
-  FOREIGN KEY (itemDropado) REFERENCES Item (id),
+  FOREIGN KEY (itemDropado) REFERENCES Item (id) ON UPDATE CASCADE ON DELETE SET NULL,
 	FOREIGN KEY (idPersonagem) REFERENCES Personagem (id)
 );
 
@@ -120,7 +127,7 @@ CREATE TABLE InstanciaPC (
     vidaAtual SMALLINT NOT NULL,
     fomeAtual SMALLINT NOT NULL,
     sanidadeAtual SMALLINT NOT NULL,
-    modoFantasma BOOLEAN NOT NULL,
+    modoFantasma BOOLEAN NOT NULL Default(false),
 		tamanhoInventario SMALLINT NOT NULL DEFAULT(10),
     FOREIGN KEY (idPersonagemJogavel) REFERENCES PersonagemJogavel (idPersonagem),
 	FOREIGN KEY (idMundo, idBioma) REFERENCES BiomaMundo (idMundo, idBioma)
@@ -134,38 +141,21 @@ CREATE TABLE Alianca (
     FOREIGN KEY (idInstanciaNpc) REFERENCES InstanciaNpc (id)
 );
 
-CREATE TABLE Item (
-    id SERIAL PRIMARY KEY,
-    itemReceita INTEGER,
-    nome VARCHAR NOT NULL,
-    descricao VARCHAR NOT NULL,
-    FOREIGN KEY (itemReceita) REFERENCES Item (id)
-);
-
 CREATE TABLE Habilidade (
     id SERIAL PRIMARY KEY,
     idHabPreReq INTEGER,
     nome VARCHAR NOT NULL,
     descricao VARCHAR NOT NULL,
-    eOfensiva BOOLEAN NOT NULL,
-    dano INTEGER,
+    dano SMALLINT NOT NULL Default(0),
     FOREIGN KEY (idHabPreReq) REFERENCES Habilidade (id)
 );
 
-CREATE TABLE Receita (
-    itemReceita INTEGER PRIMARY KEY,
-    estacaoCraft INTEGER,
-    item1 INTEGER,
-    item2 INTEGER,
-    item3 INTEGER,
-    quantidade1 SMALLINT,
-    quantidade2 SMALLINT,
-    quantidade3 SMALLINT,
-    FOREIGN KEY (itemReceita) REFERENCES Item (id),
-    FOREIGN KEY (estacaoCraft) REFERENCES Item (id),
-    FOREIGN KEY (item1) REFERENCES Item (id),
-    FOREIGN KEY (item2) REFERENCES Item (id),
-    FOREIGN KEY (item3) REFERENCES Item (id)
+CREATE TABLE HabilidadePersonagem (
+    idPersonagem INTEGER NOT NULL,
+    idHabilidade INTEGER NOT NULL,
+    PRIMARY KEY (idPersonagem, idHabilidade),
+    FOREIGN KEY (idPersonagem) REFERENCES Personagem (id),
+    FOREIGN KEY (idHabilidade) REFERENCES Habilidade (id)
 );
 
 CREATE TABLE Equipamento (
@@ -173,7 +163,7 @@ CREATE TABLE Equipamento (
     parteCorpo SMALLINT NOT NULL, -- cabeça: 1, peito: 2, mão: 3, corpo: 4
     durabilidade SMALLINT NOT NULL,
     protecao INTEGER NOT NULL,
-    ataque SMALLINT NOT NULL,
+    ataque SMALLINT NOT NULL DEFAULT(0),
     aumentaInventario SMALLINT NOT NULL DEFAULT(0),
     FOREIGN KEY (idItem) REFERENCES Item (id) 
 );
@@ -192,17 +182,31 @@ CREATE TABLE Consumivel (
     vida SMALLINT,
     sanidade SMALLINT,
     fome SMALLINT,
-    tempoApodrecimento SMALLINT,
+    tempoApodrecimento SMALLINT Default(2),  -- Em dias
     FOREIGN KEY (idItem) REFERENCES Item (id)
 );
 
 CREATE TABLE Colocavel (
     idItem SERIAL PRIMARY KEY,
-    tamanho SMALLINT NOT NULL,
-    temColisao BOOLEAN NOT NULL DEFAULT(true),
-    durabilidade SMALLINT,
+    durabilidade SMALLINT,  -- Quantidade de hits que precisa tomar para se destruir
     eEstacaoCraft BOOLEAN NOT NULL DEFAULT(false),
     FOREIGN KEY (idItem) REFERENCES Item (id)
+);
+
+CREATE TABLE Receita (
+    itemReceita INTEGER PRIMARY KEY,
+    estacaoCraft INTEGER,
+    item1 INTEGER NOT NULL,
+    item2 INTEGER,
+    item3 INTEGER,
+    quantidade1 SMALLINT NOT NULL,
+    quantidade2 SMALLINT,
+    quantidade3 SMALLINT,
+    FOREIGN KEY (itemReceita) REFERENCES Item (id),
+    FOREIGN KEY (estacaoCraft) REFERENCES Colocavel (idItem),
+    FOREIGN KEY (item1) REFERENCES Item (id),
+    FOREIGN KEY (item2) REFERENCES Item (id),
+    FOREIGN KEY (item3) REFERENCES Item (id)
 );
 
 CREATE TABLE InstanciaColocavel (
