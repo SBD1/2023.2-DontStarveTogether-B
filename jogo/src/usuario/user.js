@@ -15,12 +15,14 @@ export const loginUser = async () => {
   ]);
 
   try {
-    const user = await db.oneOrNone('SELECT * FROM Usuario WHERE nomeUsuario = $1 AND senha = $2', [  // Na evolução do trabalho a gente vai arrumar isso daqui - sei que tá feio      credentials.nomeUsuario,
+    const user = await db.oneOrNone('SELECT * FROM Usuario WHERE nomeUsuario = $1 AND senha = $2', [  // Na evolução do trabalho a gente vai arrumar isso daqui - sei que tá feio      
+      credentials.nomeUsuario,
       credentials.senha,
     ]);
   
     if (user) {
       console.log(`Bem-vindo, ${user.nome}!`);
+      return user;
     } else {
       console.log('Credenciais inválidas. Tente novamente.');
       await loginUser();
