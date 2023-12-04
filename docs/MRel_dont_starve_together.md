@@ -50,6 +50,15 @@ A versão 3 traz as modificações do banco voltadas para o sistema de Salas, ao
 A versão 3.1 aborda a normalização das tabelas de itens e de personagens, com a remoção do id único das tabelas e adicionando o id da tabela "pai" da espcialização como PK/FK. Além disso, faz correção nas ligações entre tabelas de instância para BiomaMundo.
 </p>
 
+### Versão 4
+<div align="center">
+  <img src="../assets/Modelo-Relacionalv4.png" aly="Modelo relacional v4" style="width: 900px">
+</div>
+
+<p align="justify"> 
+A versão 3.1 aborda a criação da tabela HabilidadePersonagem, a criação do relacionamento Colocavel com Receita, a atualização de colunas, tipos e normas de integridade.
+</p>
+
 # Histórico de Versão
 
 | Versão | Data | Descrição | Autor |
@@ -61,3 +70,4 @@ A versão 3.1 aborda a normalização das tabelas de itens e de personagens, com
 | 2.2 | 30/10/2023 | Cria versão 2.2 | [Levi Queiroz](https://github.com/LeviQ27) [Luis Bruno](https://github.com/lbrunofidelis) [Andre Goretti](https://github.com/AGoretti) |
 | 3.0 | 16/11/2023 | Cria versão 3 | [Luis Bruno](https://github.com/lbrunofidelis) |
 | 3.1 | 17/11/2023 | Atualiza versão 3 (normalização dos itens e instâncias) | [Luis Bruno](https://github.com/lbrunofidelis) |
+| 4.0 | 02/12/2023 | Atualiza versão 4 | [Luis Bruno](https://github.com/lbrunofidelis) |
