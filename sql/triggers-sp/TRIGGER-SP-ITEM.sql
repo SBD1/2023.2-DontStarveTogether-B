@@ -90,3 +90,24 @@ EXECUTE PROCEDURE verificarColocavel();
 -- Testes das triggers/sp de Colocavel:
 INSERT INTO Colocavel (idItem, tamanho, temColisao, durabilidade, eEstacaoCraft) VALUES (12, 1, true, 4, false);
 INSERT INTO Colocavel (idItem, tamanho, temColisao, durabilidade, eEstacaoCraft) VALUES (18, 1, true, 4, false);
+
+-- Trigger/SP para exclusão de um item, para que exclua os itens das tabelas específicas
+CREATE OR REPLACE FUNCTION excluir_item_cascata()
+RETURNS TRIGGER AS $$
+BEGIN
+    IF TG_OP = 'DELETE' THEN
+        DELETE FROM Consumivel WHERE idItem = OLD.id;
+        DELETE FROM Equipamento WHERE idItem = OLD.id;
+        DELETE FROM Colocavel WHERE idItem = OLD.id;
+    END IF;
+
+    RETURN OLD;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER t_excluir_item
+BEFORE DELETE
+ON Item
+FOR EACH ROW
+EXECUTE FUNCTION excluir_item_cascata();
+
