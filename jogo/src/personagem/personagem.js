@@ -1,6 +1,6 @@
 import db from '../db/db.js';
 
-export async function buscaPersonagensUsuario(username) {
+export async function buscarPersonagensUsuario(username) {
   try {
     const query = `
       SELECT Personagem.nome
@@ -18,5 +18,3 @@ export async function buscaPersonagensUsuario(username) {
     throw error;
   }
 }
-
-export default buscaPersonagensUsuario;
