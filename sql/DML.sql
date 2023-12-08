@@ -315,11 +315,11 @@ INSERT INTO Consumivel (idItem, vida, sanidade, fome, tempoApodrecimento) VALUES
 SELECT * FROM Consumivel;
 
 -- Colocavel
-INSERT INTO Colocavel (idItem, tamanho, temColisao, durabilidade, eEstacaoCraft) VALUES
-    (21, 1, true, 4, false),  -- cerca
-		(22, 1, true, 6, false),  -- parede de pedra
-		(23, 4, false, 3, false), -- Tapete
-		(24, 2, true, 3, true); -- Mesa craft
+INSERT INTO Colocavel (idItem, durabilidade, eEstacaoCraft) VALUES
+    (21, 1, false),  -- cerca
+		(22, 6, false),  -- parede de pedra
+		(23, 3, false), -- Tapete
+		(24, 3, true); -- Mesa craft
 		
 SELECT * FROM Colocavel;
 
@@ -346,23 +346,21 @@ INSERT INTO Inventario (idItem, idInstanciaPc, quantidade) VALUES
 	(3, 1, 4),
 	(4, 1, 3),
 	(5, 1, 1),
-	
-	(1, 2, 18),
-	(2, 2, 14),
-	(7, 2, 5),
-	(8, 2, 3),
-	(13, 2, 3),
-	(14, 2, 3);
+	(6, 1, 5),
+	(7, 1, 2),
+	(8, 1, 2),
+	(9, 1, 2),
+	(10, 1, 5);
 	
 SELECT * FROM Inventario;
 
 -- Habilidade
-INSERT INTO Habilidade (idHabPreReq, nome, descricao, eOfensiva, dano) VALUES 
-(NULL, 'Longevidade da Tocha', 'Aumenta a duração da tocha', false, NULL),
-(1, 'Longevidade da Tocha II', 'Aumenta a duração da tocha (maior que nível 1)', false, NULL),
-(2, 'Longevidade da Tocha III', 'Aumenta a duração da tocha (maior que nível 2)', false, NULL),
-(NULL, 'Estocada', 'Perfura o inimigo', true, 30),
-(4, 'Estocada II', 'Perfura o inimigo (mais dano que nível 1)', true, 60);
+INSERT INTO Habilidade (idHabPreReq, nome, descricao, dano) VALUES 
+(NULL, 'Longevidade da Tocha', 'Aumenta a duração da tocha', 0),
+(1, 'Longevidade da Tocha II', 'Aumenta a duração da tocha (maior que nível 1)', 0),
+(2, 'Longevidade da Tocha III', 'Aumenta a duração da tocha (maior que nível 2)', 0),
+(NULL, 'Estocada', 'Perfura o inimigo', 50),
+(4, 'Estocada II', 'Perfura o inimigo (mais dano que nível 1)', 65);
 
 SELECT * FROM HABILIDADE;
 
@@ -390,7 +388,7 @@ ALTER SEQUENCE Colocavel_idItem_seq RESTART WITH 1;
 ALTER SEQUENCE InstanciaColocavel_id_seq RESTART WITH 1;
 ALTER SEQUENCE Consumivel_idItem_seq RESTART WITH 1;
 ALTER SEQUENCE Habilidade_id_seq RESTART WITH 1;
-ALTER SEQUENCE HabilidadePersonagem_id_seq RESTART WITH 1;
+-- ALTER SEQUENCE HabilidadePersonagem_id_seq RESTART WITH 1;
 
 -- Drops
 DROP TABLE IF EXISTS Inventario CASCADE;
@@ -399,7 +397,9 @@ DROP TABLE IF EXISTS InstanciaColocavel CASCADE;
 DROP TABLE IF EXISTS Colocavel CASCADE;
 DROP TABLE IF EXISTS EquipamentoPersonagem CASCADE;
 DROP TABLE IF EXISTS Equipamento CASCADE;
+DROP TABLE IF EXISTS InstanciaItem CASCADE;
 DROP TABLE IF EXISTS Item CASCADE;
+DROP TABLE IF EXISTS HabilidadePersonagem CASCADE;
 DROP TABLE IF EXISTS Habilidade CASCADE;
 DROP TABLE IF EXISTS Receita CASCADE;
 DROP TABLE IF EXISTS Item CASCADE;

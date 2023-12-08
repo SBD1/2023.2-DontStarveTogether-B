@@ -28,8 +28,8 @@ FOR EACH ROW
 EXECUTE PROCEDURE verificarConsumivel();
 
 -- Testes das triggers/sp de Consumivel:
-INSERT INTO Consumivel (idItem, vida, sanidade, fome, tempoApodrecimento) VALUES (22, 12, 5, 20, 3);
-INSERT INTO Consumivel (idItem, vida, sanidade, fome, tempoApodrecimento) VALUES (18, 12, 5, 20, 3);
+INSERT INTO Consumivel (idItem, vida, sanidade, fome, tempoApodrecimento) VALUES (29, 12, 5, 20, 3);
+INSERT INTO Consumivel (idItem, vida, sanidade, fome, tempoApodrecimento) VALUES (21, 12, 5, 20, 3);
 
 -- Equipamento
 CREATE OR REPLACE FUNCTION verificarEquipamento()
@@ -106,8 +106,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER t_excluir_item
-BEFORE DELETE
-ON Item
+BEFORE DELETE ON Item
 FOR EACH ROW
 EXECUTE FUNCTION excluir_item_cascata();
 
