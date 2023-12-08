@@ -204,8 +204,8 @@ INSERT INTO InstanciaNpc (idNpc, idMundo, idBioma, vidaAtual) VALUES
 SELECT * FROM InstanciaNpc;
 
 -- InstanciaPC
-INSERT INTO InstanciaPC (idPersonagemJogavel, idMundo, idBioma, vidaAtual, fomeAtual, sanidadeAtual, modoFantasma) VALUES
-    (3, 1, 1, 100, 90, 100, false),
+INSERT INTO InstanciaPC (idPersonagemJogavel, nomeUsuario, idMundo, idBioma, vidaAtual, fomeAtual, sanidadeAtual, modoFantasma) VALUES
+    (3, 'teste,' 1, 1, 100, 90, 100, false),
     (3, 2, 1, 100, 90, 100, false);
 
 SELECT * FROM InstanciaPC;
@@ -378,7 +378,7 @@ ALTER SEQUENCE Npc_idPersonagem_seq RESTART WITH 1;
 ALTER SEQUENCE DialogoPersonagem_id_seq RESTART WITH 1;
 ALTER SEQUENCE Dialogo_id_seq RESTART WITH 1;
 ALTER SEQUENCE InstanciaNpc_id_seq RESTART WITH 1;
-ALTER SEQUENCE InstanciaPC_id_seq RESTART WITH 1;
+-- ALTER SEQUENCE InstanciaPC_id_seq RESTART WITH 1;
 ALTER SEQUENCE Alianca_id_seq RESTART WITH 1;
 ALTER SEQUENCE Item_id_seq RESTART WITH 1;
 ALTER SEQUENCE InstanciaItem_id_seq RESTART WITH 1;

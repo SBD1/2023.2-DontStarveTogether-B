@@ -3,7 +3,7 @@
 -- Descrição: Criação de tabelas (DDL)
 -- Atualizações: 
 -- 		- Criação de todas as tabelas atualizadas de acordo com o MRel.
-
+-- ROLLBACK
 BEGIN TRANSACTION;
 
 DROP TYPE IF EXISTS "Estacao";
@@ -58,9 +58,9 @@ CREATE TABLE PersonagemJogavel (
 );
 
 CREATE TABLE PersonagemUsuario (
-	id SERIAL PRIMARY KEY,
 	nomeUsuario VARCHAR NOT NULL,
 	idPersonagemJogavel INTEGER NOT NULL,
+	PRIMARY KEY (nomeUsuario, idPersonagemJogavel),
 	FOREIGN KEY (nomeUsuario) REFERENCES Usuario (nomeUsuario),
 	FOREIGN KEY (idPersonagemJogavel) REFERENCES PersonagemJogavel (idPersonagem)
 );
@@ -120,7 +120,7 @@ CREATE TABLE InstanciaNpc (
 );
 
 CREATE TABLE InstanciaPC (
-    id SERIAL PRIMARY KEY,
+	nomeUsuario VARCHAR NOT NULL,
     idPersonagemJogavel INTEGER NOT NULL,
 	  idMundo INTEGER NOT NULL,
     idBioma INTEGER NOT NULL,
@@ -129,15 +129,17 @@ CREATE TABLE InstanciaPC (
     sanidadeAtual SMALLINT NOT NULL,
     modoFantasma BOOLEAN NOT NULL Default(false),
 		tamanhoInventario SMALLINT NOT NULL DEFAULT(10),
-    FOREIGN KEY (idPersonagemJogavel) REFERENCES PersonagemJogavel (idPersonagem),
+    PRIMARY KEY (nomeUsuario, idPersonagemJogavel),
+	FOREIGN KEY (nomeUsuario, idPersonagemJogavel) REFERENCES PersonagemUsuario (nomeUsuario, idPersonagemJogavel),
 	FOREIGN KEY (idMundo, idBioma) REFERENCES BiomaMundo (idMundo, idBioma)
 );
 
 CREATE TABLE Alianca (
     id SERIAL PRIMARY KEY,
-    idInstanciaPc INTEGER NOT NULL UNIQUE,
-    idInstanciaNpc INTEGER NOT NULL UNIQUE,
-    FOREIGN KEY (idInstanciaPc) REFERENCES InstanciaPC (id),
+	idPersonagemJogavel INTEGER NOT NULL,
+    nomeUsuario VARCHAR NOT NULL,
+    idInstanciaNpc INTEGER NOT NULL,
+    FOREIGN KEY (idPersonagemJogavel, nomeUsuario) REFERENCES InstanciaPC (idPersonagemJogavel, nomeUsuario),
     FOREIGN KEY (idInstanciaNpc) REFERENCES InstanciaNpc (id)
 );
 
@@ -170,10 +172,11 @@ CREATE TABLE Equipamento (
 
 CREATE TABLE EquipamentoPersonagem (
     id SERIAL PRIMARY KEY,
-    idInstanciaPc INTEGER NOT NULL,
+	nomeUsuario VARCHAR NOT NULL,
+    idPersonagemJogavel INTEGER NOT NULL,
     idEquipamento INTEGER NOT NULL,
 	  durabilidadeAtual SMALLINT NOT NULL,
-    FOREIGN KEY (idInstanciaPc) REFERENCES InstanciaPC (id),
+    FOREIGN KEY (nomeUsuario, idPersonagemJogavel) REFERENCES InstanciaPC (nomeUsuario, idPersonagemJogavel),
     FOREIGN KEY (idEquipamento) REFERENCES Equipamento (idItem)
 );
 
@@ -221,11 +224,12 @@ FOREIGN KEY (idMundo, idBioma) REFERENCES BiomaMundo (idMundo, idBioma)
 
 CREATE TABLE Inventario (
     idItem INTEGER NOT NULL,
-    idInstanciaPc INTEGER NOT NULL,
+	nomeUsuario VARCHAR NOT NULL,
+    idPersonagemJogavel INTEGER NOT NULL,
     quantidade SMALLINT NOT NULL,
-    PRIMARY KEY (idItem, idInstanciaPc),
+    PRIMARY KEY (idItem, nomeUsuario, idPersonagemJogavel),
     FOREIGN KEY (idItem) REFERENCES Item (id),
-    FOREIGN KEY (idInstanciaPc) REFERENCES InstanciaPC (id)
+    FOREIGN KEY (nomeUsuario, idPersonagemJogavel) REFERENCES InstanciaPC (nomeUsuario, idPersonagemJogavel)
 );
 
 
