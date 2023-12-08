@@ -1,17 +1,19 @@
 import chalk from 'chalk';
 import inquirer from 'inquirer';
-import readline from 'readline';
-import { loginUser } from './usuario/user.js';
-import { getWorldsByUser } from './mundo/mundo.js';
-import { getCharacterNamesByUser } from './personagem/personagem.js';
+import { loginUser } from './usuario/usuario.js';
+import { buscaMundosUsuario } from './mundo/mundo.js';
+import { buscaPersonagensUsuario } from './personagem/personagem.js';
+import { pressioneEnter } from './utils/pressioneEnter.js';
+import { geraArteAsciiGhost } from './utils/arteAscii.js';
 
 export const startGame = async () => {
-  console.log(chalk.green(' ---- Mini game Dont Starve Together CLI! ----'));
+  const dontStarveCli = geraArteAsciiGhost("Don't Starve CLI");
+  console.log(chalk.blue.bold(dontStarveCli));
 
   const username = await loginUser();
 
   try {
-    const worlds = await getWorldsByUser(username.nomeusuario);
+    const worlds = await buscaMundosUsuario(username.nomeusuario);
     let chosenWorld;
     if (worlds.length === 0) {
       console.log(chalk.yellow('Você não possui mundos.'));
@@ -24,7 +26,7 @@ export const startGame = async () => {
       chosenWorld = await chooseWorld(worlds);
     }
 
-    const characters = await getCharacterNamesByUser(username.nomeusuario);
+    const characters = await buscaPersonagensUsuario(username.nomeusuario);
 
     if (characters.length === 0) {
       console.log(chalk.yellow('Você não possui personagens.'));
@@ -34,10 +36,10 @@ export const startGame = async () => {
         console.log(`- Personagem ${character.nome}`);
       });
     }
-      const chosenCharacter = await chooseCharacter(characters);
+      const chosenCharacter = await escolhePersonagem(characters);
       console.log(chalk.green(`\nVocê escolheu o mundo: ${chosenWorld.nome}`));
       console.log(chalk.green(`Você escolheu o personagem: ${chosenCharacter.nome}`));
-      await pressEnterToStart();
+      await pressioneEnter('Pressione Enter para iniciar o jogo');
 
   } catch (error) {
     console.error('Erro ao buscar mundos:', error);
@@ -64,7 +66,7 @@ async function chooseWorld(worlds) {
   return answer.chosenWorld;
 }
 
-async function chooseCharacter(characters) {
+async function escolhePersonagem(characters) {
   const characterChoices = characters.map((character) => ({
     name: character.nome,
     value: character,
@@ -80,20 +82,6 @@ async function chooseCharacter(characters) {
   ]);
 
   return answer.chosenCharacter;
-}
-
-async function pressEnterToStart() {
-  const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-  });
-
-  return new Promise((resolve) => {
-    rl.question(chalk.yellow('\nPressione Enter para iniciar o jogo.'), () => {
-      rl.close();
-      resolve();
-    });
-  });
 }
 
 export default startGame;

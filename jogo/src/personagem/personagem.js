@@ -1,6 +1,6 @@
 import db from '../db/db.js';
 
-export async function getCharacterNamesByUser(username) {
+export async function buscaPersonagensUsuario(username) {
   try {
     const query = `
       SELECT Personagem.nome
@@ -19,4 +19,4 @@ export async function getCharacterNamesByUser(username) {
   }
 }
 
-export default getCharacterNamesByUser;
+export default buscaPersonagensUsuario;

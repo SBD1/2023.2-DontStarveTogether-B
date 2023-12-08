@@ -1,6 +1,6 @@
 import db from '../db/db.js';
 
-export async function getWorldsByUser(nomeUsuario) {
+export async function buscaMundosUsuario(nomeUsuario) {
   try {
     const worlds = await db.any('SELECT * FROM Mundo WHERE idUsuario = $1', [nomeUsuario]);
     return worlds;

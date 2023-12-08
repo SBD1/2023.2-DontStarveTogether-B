@@ -11,7 +11,7 @@ import db from '../db/db.js';
 export const loginUser = async () => {
   const credentials = await inquirer.prompt([
     { type: 'nomeUsuario', name: 'nomeUsuario', message: 'Digite seu nome de usuário:' },
-    { type: 'senha', name: 'senha', message: 'Digite sua senha:' },
+    { type: 'password', name: 'senha', message: 'Digite sua senha:' },
   ]);
 
   try {
