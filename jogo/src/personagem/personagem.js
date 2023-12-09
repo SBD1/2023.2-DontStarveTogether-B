@@ -3,7 +3,7 @@ import db from '../db/db.js';
 export async function buscarPersonagensUsuario(username) {
   try {
     const query = `
-      SELECT Personagem.nome
+      SELECT PersonagemUsuario.nomeUsuario, PersonagemUsuario.idPersonagemJogavel, Personagem.nome
       FROM Usuario
       JOIN PersonagemUsuario ON Usuario.nomeUsuario = PersonagemUsuario.nomeUsuario
       JOIN PersonagemJogavel ON PersonagemUsuario.idPersonagemJogavel = PersonagemJogavel.idPersonagem
@@ -11,7 +11,7 @@ export async function buscarPersonagensUsuario(username) {
       WHERE Usuario.nomeUsuario = $1;
     `;
 
-    const characterNames = await db.any(query, [username]); // já retorna os nomes dos personagens
+    const characterNames = await db.any(query, [username]);
     return characterNames;
   } catch (error) {
     console.error('Erro ao buscar personagens:', error);

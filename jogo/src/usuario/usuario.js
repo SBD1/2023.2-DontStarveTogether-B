@@ -1,13 +1,6 @@
 import inquirer from 'inquirer';
 import db from '../db/db.js';
 
-// interface User {   // caso a gente ainda use ts, cá está o modelo de interface.
-//   nomeUsuario: string;
-//   email: string;
-//   senha: string;
-//   nome: string;
-// }
-
 export const loginUser = async () => {
   const credentials = await inquirer.prompt([
     { type: 'nomeUsuario', name: 'nomeUsuario', message: 'Digite seu nome de usuário:' },
