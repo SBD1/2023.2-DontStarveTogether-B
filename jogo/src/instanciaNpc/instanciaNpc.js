@@ -23,3 +23,31 @@ export async function buscarInstanciasNpc(idMundo, idBioma) {
     throw error;
   }
 }
+
+export async function buscarInstanciaNpcPorId(idInstanciaNpc) {
+  try {
+    const instanciaNpc = await db.oneOrNone("SELECT * FROM InstanciaNpc WHERE id = $1", [idInstanciaNpc]);
+    return instanciaNpc;
+  } catch (error) {
+    console.error("Erro ao buscar instância Npc:", error);
+    throw error;
+  }
+}
+
+export async function excluirInstanciaNpcPorId(idInstanciaNpc) {
+  try {
+    await db.none("DELETE FROM InstanciaNpc WHERE id = $1", [idInstanciaNpc]);
+  } catch (error) {
+    console.error("Erro ao excluir instância Npc:", error);
+    throw error;
+  }
+}
+
+export async function atualizarVidaInstanciaNpcPorId(idInstanciaNpc, vidaAtual) {
+  try {
+    await db.none("UPDATE InstanciaNpc SET vidaAtual = $1 WHERE id = $2", [vidaAtual, idInstanciaNpc]);
+  } catch (error) {
+    console.error("Erro ao atualizar HP instância Npc:", error);
+    throw error;
+  }
+}
