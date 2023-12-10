@@ -59,7 +59,7 @@ INSERT INTO Personagem (nome, descricao, vida, dano) VALUES
 ('Abigail', 'A falecida irmã gêmea da wendy', 500, 25),  -- id 9
 ('Pássaro', 'Um pássaro inofensivo', 20, 0),  -- id 10
 ('Coelho', 'Um coelho inofensivo', 20, 0),  -- id 11
-('Toupeira', 'Uma toupeira inofensivo', 20, 0);  -- id 12
+('Toupeira', 'Uma toupeira inofensiva', 20, 0);  -- id 12
 
 SELECT * FROM Personagem;
 

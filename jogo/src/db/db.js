@@ -7,7 +7,7 @@ const connectionConfig = {
   port: 5432,
   database: 'dont-starve',
   user: 'node',
-  password: 'jsn0d3-sbd1', // coloque sua senha até criarmos um .env
+  password: 'jsn0d3-sbd1',
 };
 
 const db = pgp(connectionConfig);

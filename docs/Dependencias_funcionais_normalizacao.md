@@ -65,3 +65,6 @@
 
 #### 3FN: os atributos (próprias chaves pk fk) são totalmente dependentes da chave primária `idMundo idBioma`
 
+| Versão | Data | Descrição | Autor |
+| :-----: | :------: | ------- | -------- |
+| 1.0 | 10/11/2023 | Cria doc e normalização até BiomaMundo | [Luis Bruno](https://github.com/lbrunofidelis) |

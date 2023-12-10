@@ -63,11 +63,11 @@ A versão 3.1 aborda a criação da tabela HabilidadePersonagem, a criação do 
 
 | Versão | Data | Descrição | Autor |
 | :-----: | :------: | ------- | -------- |
-| 1.0 | 02/10/2023 | Criação do Documento | [Levi Queiroz](https://github.com/LeviQ27) |
-| 1.1 | 02/10/2023 | Adiciona Mrel | [Levi Queiroz](https://github.com/LeviQ27) [Luis Bruno](https://github.com/lbrunofidelis) [Andre Goretti](https://github.com/AGoretti) |
+| 1.0 | 02/10/2023 | Criação do Documento (apenas criou template) | [Levi Queiroz](https://github.com/LeviQ27) |
+| 1.1 | 02/10/2023 | Adiciona Mrel | [Luis Bruno](https://github.com/lbrunofidelis) |
 | 2.0 | 23/10/2023 | Cria versão 2 | [Luis Bruno](https://github.com/lbrunofidelis) |
 | 2.1 | 28/10/2023 | Cria versão 2.1 | [Luis Bruno](https://github.com/lbrunofidelis) |
-| 2.2 | 30/10/2023 | Cria versão 2.2 | [Levi Queiroz](https://github.com/LeviQ27) [Luis Bruno](https://github.com/lbrunofidelis) [Andre Goretti](https://github.com/AGoretti) |
+| 2.2 | 30/10/2023 | Cria versão 2.2 | [Luis Bruno](https://github.com/lbrunofidelis) |
 | 3.0 | 16/11/2023 | Cria versão 3 | [Luis Bruno](https://github.com/lbrunofidelis) |
 | 3.1 | 17/11/2023 | Atualiza versão 3 (normalização dos itens e instâncias) | [Luis Bruno](https://github.com/lbrunofidelis) |
 | 4.0 | 02/12/2023 | Atualiza versão 4 | [Luis Bruno](https://github.com/lbrunofidelis) |
