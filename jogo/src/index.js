@@ -5,16 +5,23 @@ import { buscarMundosUsuario } from './mundo/mundo.js';
 import { buscarPersonagensUsuario } from './personagem/personagem.js';
 import { limparTela, pressioneEnter } from './utils/console.js';
 import { geraArteAsciiGhost } from './utils/arteAscii.js';
+import game from './game.js';
+import { apagarDados } from './dadosSessao.js';
 
 export const menuPrincipal = async () => {
   const dontStarveCli = geraArteAsciiGhost("Don't Starve CLI");
-  console.log(chalk.blue.bold(dontStarveCli));
+  console.log(chalk.white(dontStarveCli));
+  
+  const larguraTerminal = process.stdout.columns;
+  const lbrunofidelis = '@lbrunofidelis';
+  const padding = ' '.repeat(larguraTerminal - lbrunofidelis.length);
+  console.log(chalk.gray(padding + lbrunofidelis));
 
   const username = await loginUser();
 
   try {
     const worlds = await buscarMundosUsuario(username.nomeusuario);
-    let chosenWorld;
+    let mundoSelecionado;
     if (worlds.length === 0) {
       console.log(chalk.yellow('Você não possui mundos.'));
     } else {
@@ -23,7 +30,7 @@ export const menuPrincipal = async () => {
         console.log(`- Mundo ${world.nome}, Estação: ${world.estacao}, Dia Atual: ${world.diaatual}`);
       });
 
-      chosenWorld = await chooseWorld(worlds);
+      mundoSelecionado = await chooseWorld(worlds);
     }
 
     const characters = await buscarPersonagensUsuario(username.nomeusuario);
@@ -36,17 +43,20 @@ export const menuPrincipal = async () => {
         console.log(`- Personagem ${character.nome}`);
       });
     }
-      const chosenCharacter = await escolhePersonagem(characters);
-      console.log(chalk.green(`\nVocê escolheu o mundo: ${chosenWorld.nome}`));
-      console.log(chalk.green(`Você escolheu o personagem: ${chosenCharacter.nome}`));
+      const personagemSelecionado = await escolhePersonagem(characters);
+      console.log(chalk.green(`\nVocê escolheu o mundo: ${mundoSelecionado.nome}`));
+      console.log(chalk.green(`Você escolheu o personagem: ${personagemSelecionado.nome}`));
       await pressioneEnter('Pressione Enter para iniciar o jogo');
 
       await limparTela();
+      await game(personagemSelecionado.nomeusuario, personagemSelecionado.idpersonagemjogavel);
+      // await game('teste', 3);
   } catch (error) {
-    console.error('Erro ao buscar mundos:', error);
+    console.error('Erro:', error);
   }
-
-  console.log(chalk.yellow('O jogo foi encerrado'));
+  
+  // apagarDados();
+  console.log(chalk.yellow('~ bye'));
 };
 
 async function chooseWorld(worlds) {
