@@ -1,18 +1,18 @@
 BEGIN TRANSACTION;
 
 -- Usuario
-INSERT INTO Usuario (nomeUsuario, nome, email, senha) VALUES ('lukeskywalker', 'Luke Skywalker', 'luke@gmail.com', 'f0rça'),
-('darthvader', 'Darth', 'darth@imperio.com', 'souseupai'),
-('fulano123', 'Fulano Silva', 'fulano@gmail.com', 'senha123'),
-('carlosroberto', 'Roberto Carlos', 'roberto@gmail.com', 'especialdenatal'),
-('mauserrbr', 'Mauricio Serrano', 'mauserrbr@gmail.com', 'serranomauricioprof'),
-('teste', 'Usuário Teste', 'teste@gmail.com', '123');
+INSERT INTO Usuario (nomeUsuario, nome, senha) VALUES ('lukeskywalker', 'Luke Skywalker', 'f0rça'),
+('darthvader', 'Darth', 'souseupai'),
+('fulano123', 'Fulano Silva', 'senha123'),
+('carlosroberto', 'Roberto Carlos', 'especialdenatal'),
+('mauserrbr', 'Mauricio Serrano', 'serranomauricioprof'),
+('teste', 'Usuário Teste', '123');
 
 SELECT * FROM Usuario;
 
 -- Mundo
 INSERT INTO Mundo (idUsuario, nome, estacao)
-VALUES ('teste', 'Mundo sem nome', 'Autumn'),
+VALUES ('teste', 'Dark earth', 'Autumn'),
        ('mauserrbr', 'World 2', 'Winter'),
        ('fulano123', 'Gameplay da galera', 'Spring'),
        ('carlosroberto', 'to sem criatividade', 'Summer'),
@@ -76,8 +76,7 @@ SELECT * FROM PersonagemJogavel;
 INSERT INTO PersonagemUsuario (nomeUsuario, idPersonagemJogavel) VALUES 
 ('teste', 3),
 ('teste', 4),
-('mauserrbr', 3),
-('mauserrbr', 1);
+('mauserrbr', 3);
 
 SELECT * FROM PersonagemUsuario;
 
@@ -205,8 +204,9 @@ SELECT * FROM InstanciaNpc;
 
 -- InstanciaPC
 INSERT INTO InstanciaPC (idPersonagemJogavel, nomeUsuario, idMundo, idBioma, vidaAtual, fomeAtual, sanidadeAtual, modoFantasma) VALUES
-    (3, 'teste,' 1, 1, 100, 90, 100, false),
-    (3, 2, 1, 100, 90, 100, false);
+    (3, 'teste', 1, 1, 200, 90, 100, false),
+	(4, 'teste', 1, 1, 150, 100, 90, false),
+    (3, 'mauserrbr', 1, 1, 200, 90, 100, false);
 
 SELECT * FROM InstanciaPC;
 
@@ -218,39 +218,49 @@ SELECT * FROM InstanciaPC;
   
 -- Item Consumiveis (ids 16 a 25)
 INSERT INTO Item (nome, descricao) VALUES
-  ('Misto de frutas', 'Uma boa quantidade frutas genéricas frescas'),
-  ('Coelho morto', 'Um coelho abatido fresco, pronto para preparo'),
-  ('Coelho assado', 'Um coelho quentinho assado na brasa'),
-  ('Toupeira morta', 'Uma toupeira abatida, pronta para preparo'),
-  ('Toupeira assada', 'Uma toupeira quentinha assada na brasa'),
-  ('Ave morta', 'Uma ave abatida, pronta para preparo'),
-  ('Ave assada', 'Uma ave quentinha assada na brasa'),
-  ('Cozido de Carnes', 'Um prato saboroso de carne de animal'),
-  ('Salada de Folhas', 'Uma salada refrescante de folhas verdes'),
+  ('Misto de frutas', 'Uma boa quantidade frutas genéricas frescas'), -- id 16
+  ('Coelho morto', 'Um coelho abatido fresco, pronto para preparo'), -- id 17
+  ('Coelho assado', 'Um coelho quentinho assado na brasa'), -- id 18
+  ('Toupeira morta', 'Uma toupeira abatida, pronta para preparo'), -- id 19
+  ('Toupeira assada', 'Uma toupeira quentinha assada na brasa'), -- id 20
+  ('Ave morta', 'Uma ave abatida, pronta para preparo'), -- id 21
+  ('Ave assada', 'Uma ave quentinha assada na brasa'), -- id 22
+  ('Cozido de Carnes', 'Um prato saboroso de carne de animal'), -- id 23
+  ('Salada de Folhas', 'Uma salada refrescante de folhas verdes'), -- id 24
   ('Sopa de Pele', 'Uma sopa quentinha feita com pele de animal'); -- id 25
 
 -- Item Equipamentos (ids 26 a 35)
 INSERT INTO Item (nome, descricao) VALUES
-  ('Machado', 'Um machado simples, mas que funciona muito bem'),
-  ('Picareta', 'Uma picareta simples, mas que funciona muito bem'),
-  ('Espada', 'Uma espada simples, mas que funciona muito bem'),
-  ('Armadura de Madeira', 'Uma armadura rudimentar feita de tábuas de madeira'),
-  ('Lança de Batalha', 'Uma lança afiada e resistente'),
-  ('Bastão Apresuntado', 'Um bastão feito de carne de animal'),
-  ('Capacete Trabalhado', 'Um capacete resistente feito de ferro e madeira.'),
-  ('Bota de Pele', 'Uma bota quente e confortável feita de pele de animal.'),
-  ('Mochila pequena', 'Uma mochila que adiciona 5 espaços no seu inventário.'),
+  ('Machado', 'Um machado simples, mas que funciona muito bem'), -- id 26
+  ('Picareta', 'Uma picareta simples, mas que funciona muito bem'), -- id 27
+  ('Espada', 'Uma espada simples, mas que funciona muito bem'), -- id 28
+  ('Armadura de Madeira', 'Uma armadura rudimentar feita de tábuas de madeira'), -- id 29
+  ('Lança de Batalha', 'Uma lança afiada e resistente'), -- id 30
+  ('Bastão Apresuntado', 'Um bastão feito de carne de animal'), -- id 31
+  ('Capacete Trabalhado', 'Um capacete resistente feito de ferro e madeira.'), -- id 32
+  ('Bota de Pele', 'Uma bota quente e confortável feita de pele de animal.'), -- id 33
+  ('Mochila pequena', 'Uma mochila que adiciona 5 espaços no seu inventário.'), -- id 34
   ('Tocha', 'Uma tocha para iluminar suas noites escuras'); -- id 35
 
 --Item Colocaveis (36 a 40)
 INSERT INTO Item (nome, descricao) VALUES
-  ('Fogueira', 'Uma fogueira acochegante, muito útil para noites frias e escuras'),
-  ('Cerca de Madeira', 'Uma cerca simples feita de tábuas de madeira'),
-  ('Tapete', 'Um tapete macio e aconchegante de pele de animal.'),
-  ('Panela velha', '"Panela velha é a que faz comida boa"'),
+  ('Fogueira', 'Uma fogueira acochegante, muito útil para noites frias e escuras'), -- id 36
+  ('Cerca de Madeira', 'Uma cerca simples feita de tábuas de madeira'), -- id 37
+  ('Tapete', 'Um tapete macio e aconchegante de pele de animal.'), -- id 38
+  ('Panela velha', '"Panela velha é a que faz comida boa"'), -- id 39
   ('Mesa de Trabalho', 'Uma mesa de trabalho robusta de madeira e pedra'); -- id 40
 
 SELECT * FROM ITEM;
+
+-- Colocavel
+INSERT INTO Colocavel (idItem, durabilidade, eEstacaoCraft) VALUES
+	(36, 1, true),  -- fogueira
+    (37, 1, false),  -- cerca
+		(38, 6, false),  -- tapete
+		(39, 3, false), -- panela velha
+		(40, 3, true); -- Mesa craft
+		
+SELECT * FROM Colocavel;
 
 -- Receitas 1 item
 INSERT INTO Receita (itemReceita, estacaoCraft, item1, quantidade1) VALUES
@@ -280,9 +290,9 @@ SELECT * FROM Receita;
 
 -- Especialiazações de Items: Equipamento
 INSERT INTO Equipamento (idItem, parteCorpo, durabilidade, protecao, ataque, aumentaInventario) VALUES
-    (26, 3, 80, 0, 10, 0), -- Machado (mão)
-    (27, 3, 80, 0, 10, 0),  -- Picareta (mão)
-    (28, 3, 80, 0, 20, 0), -- Espada (Mão)
+    (26, 3, 100, 0, 10, 0), -- Machado (mão)
+    (27, 3, 100, 0, 10, 0),  -- Picareta (mão)
+    (28, 3, 100, 0, 20, 0), -- Espada (Mão)
     (29, 2, 100, 20, 0, 0), -- Armadura de madeira (peito)
     (30, 3, 100, 0, 40, 0),  -- Lança de batalha (mão)
     (31, 3, 100, 0, 30, 0),  -- Bastão Apresuntado (mão)
@@ -294,34 +304,19 @@ INSERT INTO Equipamento (idItem, parteCorpo, durabilidade, protecao, ataque, aum
 SELECT * FROM Equipamento;
 
 -- EquipamentoPersonagem
-INSERT INTO EquipamentoPersonagem (idInstanciaPc, idequipamento, durabilidadeAtual) VALUES
-		(1, 14, 20),
-		(2, 15, 13),
-		(3, 16, 4),
-		(1, 17, 40),
-		(2, 18, 25),
-		(3, 19, 30),
-		(1, 20, 10),
-		(2, 14, 2);
+INSERT INTO EquipamentoPersonagem (nomeUsuario, idPersonagemJogavel, idEquipamento, durabilidadeAtual) VALUES
+		('teste', 3, 28, 100),
+		('teste', 3, 33, 100);
 
 SELECT * FROM EquipamentoPersonagem;
 
 -- Especializações Itens: Consumivel -- Criar instancia consumivel e adicionar coluna tempo (em dias)
-INSERT INTO Consumivel (idItem, vida, sanidade, fome, tempoApodrecimento) VALUES 
-	  (11, 12, 5, 20, 3),
-		(12, 18, 10, 26, 2),
-		(13, 22, 18, 31, 1);
+INSERT INTO Consumivel (idItem, vida, sanidade, fome) VALUES 
+	  (11, 12, 5, 20),
+		(12, 18, 10, 26),
+		(13, 22, 18, 31);
 
 SELECT * FROM Consumivel;
-
--- Colocavel
-INSERT INTO Colocavel (idItem, durabilidade, eEstacaoCraft) VALUES
-    (21, 1, false),  -- cerca
-		(22, 6, false),  -- parede de pedra
-		(23, 3, false), -- Tapete
-		(24, 3, true); -- Mesa craft
-		
-SELECT * FROM Colocavel;
 
 -- InstanciaColocavel
 INSERT INTO InstanciaColocavel (idColocavel, idMundo, idBioma, durabilidadeAtual) VALUES
@@ -340,17 +335,17 @@ INSERT INTO InstanciaColocavel (idColocavel, idMundo, idBioma, durabilidadeAtual
 SELECT * FROM InstanciaColocavel;
 
 -- Inventario
-INSERT INTO Inventario (idItem, idInstanciaPc, quantidade) VALUES 
-	(1, 1, 10),
-	(2, 1, 12),
-	(3, 1, 4),
-	(4, 1, 3),
-	(5, 1, 1),
-	(6, 1, 5),
-	(7, 1, 2),
-	(8, 1, 2),
-	(9, 1, 2),
-	(10, 1, 5);
+INSERT INTO Inventario (idItem, nomeUsuario, idPersonagemJogavel, quantidade) VALUES 
+	(1, 'teste', 3, 10),
+	(2, 'teste', 3, 12),
+	(3, 'teste', 3, 4),
+	(4, 'teste', 3, 3),
+	(5, 'teste', 3, 1),
+	(6, 'teste', 3, 5),
+	(7, 'teste', 3, 2),
+	(8, 'teste', 3, 2),
+	(9, 'teste', 3, 2),
+	(10, 'teste', 3, 5);
 	
 SELECT * FROM Inventario;
 
@@ -372,7 +367,7 @@ BEGIN TRANSACTION;
 ALTER SEQUENCE Mundo_id_seq RESTART WITH 1;
 ALTER SEQUENCE Bioma_id_seq RESTART WITH 1;
 ALTER SEQUENCE Personagem_id_seq RESTART WITH 1;
-ALTER SEQUENCE PersonagemUsuario_id_seq RESTART WITH 1;
+--ALTER SEQUENCE PersonagemUsuario_id_seq RESTART WITH 1;
 ALTER SEQUENCE PersonagemJogavel_idPersonagem_seq RESTART WITH 1;
 ALTER SEQUENCE Npc_idPersonagem_seq RESTART WITH 1;
 ALTER SEQUENCE DialogoPersonagem_id_seq RESTART WITH 1;

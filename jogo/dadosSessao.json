@@ -1,0 +1,127 @@
+{
+  "instanciaPc": {
+    "nomeusuario": "mauserrbr",
+    "idpersonagemjogavel": 3,
+    "idmundo": 1,
+    "idbioma": 1,
+    "vidaatual": 150,
+    "fomeatual": 90,
+    "sanidadeatual": 100,
+    "modofantasma": false,
+    "tamanhoinventario": 10,
+    "sanidade": 100,
+    "fome": 90,
+    "vida": 200,
+    "dano": 40,
+    "nome": "Wolfgang"
+  },
+  "biomaMundo": {
+    "nomebioma": "Floresta",
+    "descricao": "Uma floresta pacífica e com muitos recursos para explorar",
+    "nomemundo": "Mundo sem nome",
+    "nomeestacao": "Autumn",
+    "diaatual": 0
+  },
+  "instanciasNpc": [
+    {
+      "idinstancianpc": 1,
+      "idnpc": 10,
+      "idmundo": 1,
+      "idbioma": 1,
+      "vidaatual": 20,
+      "itemdropado": null,
+      "tiponpc": "P",
+      "eboss": false,
+      "nomepersonagem": "Pássaro",
+      "descricaopersonagem": "Um pássaro inofensivo",
+      "vidapersonagem": 20,
+      "danopersonagem": 0
+    },
+    {
+      "idinstancianpc": 2,
+      "idnpc": 11,
+      "idmundo": 1,
+      "idbioma": 1,
+      "vidaatual": 20,
+      "itemdropado": null,
+      "tiponpc": "P",
+      "eboss": false,
+      "nomepersonagem": "Coelho",
+      "descricaopersonagem": "Um coelho inofensivo",
+      "vidapersonagem": 20,
+      "danopersonagem": 0
+    },
+    {
+      "idinstancianpc": 3,
+      "idnpc": 12,
+      "idmundo": 1,
+      "idbioma": 1,
+      "vidaatual": 20,
+      "itemdropado": null,
+      "tiponpc": "P",
+      "eboss": false,
+      "nomepersonagem": "Toupeira",
+      "descricaopersonagem": "Uma toupeira inofensiva",
+      "vidapersonagem": 20,
+      "danopersonagem": 0
+    }
+  ],
+  "instanciasItens": [
+    {
+      "idinstanciaitem": 1,
+      "iditem": 1,
+      "idmundo": 1,
+      "idbioma": 1,
+      "nome": "Madeira",
+      "descricao": "Um pedaço de madeira normal",
+      "quantidade": "10"
+    },
+    {
+      "idinstanciaitem": 11,
+      "iditem": 2,
+      "idmundo": 1,
+      "idbioma": 1,
+      "nome": "Pedra",
+      "descricao": "Uma pedra comum, pode ser usada para construção",
+      "quantidade": "5"
+    },
+    {
+      "idinstanciaitem": 16,
+      "iditem": 3,
+      "idmundo": 1,
+      "idbioma": 1,
+      "nome": "Flint",
+      "descricao": "Um fragmento de pedra afiada, ótimo para ferramentas",
+      "quantidade": "5"
+    },
+    {
+      "idinstanciaitem": 21,
+      "iditem": 4,
+      "idmundo": 1,
+      "idbioma": 1,
+      "nome": "Grama",
+      "descricao": "Uma grama comum",
+      "quantidade": "5"
+    },
+    {
+      "idinstanciaitem": 26,
+      "iditem": 5,
+      "idmundo": 1,
+      "idbioma": 1,
+      "nome": "Graveto",
+      "descricao": "Um pequeno graveto",
+      "quantidade": "5"
+    },
+    {
+      "idinstanciaitem": 31,
+      "iditem": 9,
+      "idmundo": 1,
+      "idbioma": 1,
+      "nome": "Ouro",
+      "descricao": "Um pequena e valiosa pedra de ouro, utilizado para criações especiais",
+      "quantidade": "3"
+    }
+  ],
+  "equipamentos": [],
+  "inventario": []
+}
