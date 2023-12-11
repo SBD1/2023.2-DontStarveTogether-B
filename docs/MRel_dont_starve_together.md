@@ -56,7 +56,16 @@ A versão 3.1 aborda a normalização das tabelas de itens e de personagens, com
 </div>
 
 <p align="justify"> 
-A versão 3.1 aborda a criação da tabela HabilidadePersonagem, a criação do relacionamento Colocavel com Receita, a atualização de colunas, tipos e normas de integridade.
+A versão 4 aborda a criação da tabela HabilidadePersonagem, a criação do relacionamento Colocavel com Receita, a atualização de colunas, tipos e normas de integridade.
+</p>
+
+### Versão 4.1
+<div align="center">
+  <img src="../assets/Modelo-Relacionalv4.1.png" aly="Modelo relacional v4" style="width: 900px">
+</div>
+
+<p align="justify"> 
+A versão 4.1 contempla a adição da tabela InstanciaItem para o armazenamento de quantidades limitadas de itens e o armazenamento da localização dos mesmos, e também a atualização dos tipos e adição de outras colunas.
 </p>
 
 # Histórico de Versão
@@ -71,3 +80,4 @@ A versão 3.1 aborda a criação da tabela HabilidadePersonagem, a criação do 
 | 3.0 | 16/11/2023 | Cria versão 3 | [Luis Bruno](https://github.com/lbrunofidelis) |
 | 3.1 | 17/11/2023 | Atualiza versão 3 (normalização dos itens e instâncias) | [Luis Bruno](https://github.com/lbrunofidelis) |
 | 4.0 | 02/12/2023 | Atualiza versão 4 | [Luis Bruno](https://github.com/lbrunofidelis) |
+| 4.1 | 10/12/2023 | Atualiza versão 4.1 | [Luis Bruno](https://github.com/lbrunofidelis) |
