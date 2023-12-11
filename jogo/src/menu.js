@@ -11,7 +11,7 @@ export async function exibirMenu() {
 
     if(tempo === 5) {
       console.log(chalk.yellow('╔════════════════════════════╗'));
-      console.log(chalk.yellow('║  Um novo dia se inicia   ☀ ║'));
+      console.log(chalk.yellow('║  Um novo dia se inicia...  ║'));
       console.log(chalk.yellow('╚════════════════════════════╝\n'));
       
       await atualizaDiaAtual(dadosSessao.instanciaPc.idmundo);

@@ -50,12 +50,11 @@ export const menuPrincipal = async () => {
 
       await limparTela();
       await game(personagemSelecionado.nomeusuario, personagemSelecionado.idpersonagemjogavel);
-      // await game('teste', 3);
   } catch (error) {
     console.error('Erro:', error);
   }
   
-  // apagarDados();
+  apagarDados();
   console.log(chalk.yellow('~ bye'));
 };
 

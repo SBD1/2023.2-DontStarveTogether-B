@@ -25,7 +25,7 @@ export async function atacar(idInstanciaNpc) {
       WHERE id = ${instanciaNpc.id}
     `);
 
-    buscarDadosBiomaAtual(dadosSessao.instanciaPc.idpersonagemjogavel, dadosSessao.instanciaPc.idmundo);
+    buscarDadosBiomaAtual(dadosSessao.instanciaPc.nomeusuario, dadosSessao.instanciaPc.idpersonagemjogavel);
 
     return dano;
   } catch (error) {
