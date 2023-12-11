@@ -1,10 +1,10 @@
 {
   "instanciaPc": {
-    "nomeusuario": "mauserrbr",
+    "nomeusuario": "teste",
     "idpersonagemjogavel": 3,
     "idmundo": 1,
     "idbioma": 1,
-    "vidaatual": 150,
+    "vidaatual": 200,
     "fomeatual": 90,
     "sanidadeatual": 100,
     "modofantasma": false,
@@ -122,6 +122,90 @@
       "quantidade": "3"
     }
   ],
-  "equipamentos": [],
-  "inventario": []
+  "equipamentos": [
+    {
+      "idequipamentopersonagem": 1,
+      "idequipamento": 28,
+      "durabilidadeatual": 100,
+      "partecorpo": "Mão",
+      "ataque": 20,
+      "protecao": 0,
+      "aumentainventario": 0,
+      "nome": "Espada",
+      "descricao": "Uma espada simples, mas que funciona muito bem"
+    },
+    {
+      "idequipamentopersonagem": 2,
+      "idequipamento": 33,
+      "durabilidadeatual": 100,
+      "partecorpo": "Corpo",
+      "ataque": 0,
+      "protecao": 15,
+      "aumentainventario": 0,
+      "nome": "Bota de Pele",
+      "descricao": "Uma bota quente e confortável feita de pele de animal."
+    }
+  ],
+  "inventario": [
+    {
+      "iditem": 1,
+      "quantidade": 10,
+      "nome": "Madeira",
+      "descricao": "Um pedaço de madeira normal"
+    },
+    {
+      "iditem": 2,
+      "quantidade": 12,
+      "nome": "Pedra",
+      "descricao": "Uma pedra comum, pode ser usada para construção"
+    },
+    {
+      "iditem": 3,
+      "quantidade": 4,
+      "nome": "Flint",
+      "descricao": "Um fragmento de pedra afiada, ótimo para ferramentas"
+    },
+    {
+      "iditem": 4,
+      "quantidade": 3,
+      "nome": "Grama",
+      "descricao": "Uma grama comum"
+    },
+    {
+      "iditem": 5,
+      "quantidade": 1,
+      "nome": "Graveto",
+      "descricao": "Um pequeno graveto"
+    },
+    {
+      "iditem": 6,
+      "quantidade": 5,
+      "nome": "Folha",
+      "descricao": "Uma folha verde"
+    },
+    {
+      "iditem": 7,
+      "quantidade": 2,
+      "nome": "Carvão",
+      "descricao": "Carvão de madeira queimada"
+    },
+    {
+      "iditem": 8,
+      "quantidade": 2,
+      "nome": "Minério de Ferro",
+      "descricao": "Minério de ferro bruto"
+    },
+    {
+      "iditem": 9,
+      "quantidade": 2,
+      "nome": "Ouro",
+      "descricao": "Um pequena e valiosa pedra de ouro, utilizado para criações especiais"
+    },
+    {
+      "iditem": 10,
+      "quantidade": 5,
+      "nome": "Pena",
+      "descricao": "Uma pena de ave"
+    }
+  ]
 }

@@ -9,3 +9,12 @@ export async function buscarMundosUsuario(nomeUsuario) {
     throw error;
   }
 }
+
+export async function atualizaDiaAtual(idMundo) {
+  try {
+    await db.none('UPDATE Mundo SET diaAtual = diaAtual + 1 WHERE id = $1', [idMundo]);
+  } catch (error) {
+    console.error('Erro ao atualizar dia:', error);
+    throw error;
+  }
+}

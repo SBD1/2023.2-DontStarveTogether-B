@@ -8,8 +8,10 @@ import { exibirMenu } from './menu.js';
 import { carregarDados, salvarDados } from './dadosSessao.js';
 import { buscarEquipamentosPersonagem } from './equipamento/equipamento.js';
 import { buscarInventario } from './inventario/inventario.js';
+import { atualizaDiaAtual } from './mundo/mundo.js';
 
 async function game(nomeUsuario, idPersonagemJogavel) {
+
   while(true) {
     await buscarDadosBiomaAtual(nomeUsuario, idPersonagemJogavel);
     await imprimeStatus();
@@ -34,7 +36,7 @@ async function buscarDadosBiomaAtual(nomeUsuario, idPersonagemJogavel) {
   const equipamentos = await buscarEquipamentosPersonagem(nomeUsuario, idPersonagemJogavel);
   const inventario = await buscarInventario(nomeUsuario, idPersonagemJogavel);
 
-  const dadosBiomaAtual = {
+  const dadosSessao = {
     instanciaPc,
     biomaMundo,
     instanciasNpc,
@@ -43,7 +45,7 @@ async function buscarDadosBiomaAtual(nomeUsuario, idPersonagemJogavel) {
     inventario
   }
 
-  salvarDados(dadosBiomaAtual);
+  salvarDados(dadosSessao);
 }
 
 async function imprimeStatus() {
