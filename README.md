@@ -31,6 +31,7 @@ Este repositório contém informações relacionadas ao projeto de criação des
 - [Apresentação](https://www.youtube.com/watch?v=BGKRGwI11oI&ab_channel=LuisBrunoFidelis)
 
 ### Entrega final 
+- [Apresentação](https://youtu.be/8nX1psgBULk)
 
 ### Configurando o banco de dados
 - Para criar e popular o banco, execute todas as transações presentes no [DDL](https://github.com/SBD1/2023.2-DontStarveTogether-B/blob/main/sql/DDL.sql) e no [DML](https://github.com/SBD1/2023.2-DontStarveTogether-B/blob/main/sql/DML.sql) (exceto os drop database). 
@@ -44,6 +45,20 @@ Este repositório contém informações relacionadas ao projeto de criação des
 - Para iniciar o jogo execute `npm start`
 
 ### Telas (v1)
+![tela-login](./assets/tela-login.PNG)     
+Login
+
+![inicia-jogo](./assets/inicia-jogo.PNG)     
+Iniciando jogo
+
+![informacoes](./assets/informacoes.PNG)     
+Informações
+
+![menu-geral](./assets/menu-geral.PNG)     
+Menu geral
+
+![atacando](./assets/atacando.PNG)     
+Atacando
 
 ### Aluno ✌🏼
 - [Luis Bruno](https://github.com/lbrunofidelis)
