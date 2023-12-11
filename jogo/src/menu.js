@@ -41,7 +41,11 @@ export async function exibirMenu() {
 
     switch (menu.opcao) {
       case 'atacar':
-        await menuAtaque();
+        const dano = await menuAtaque();
+        if(dano === 'cancelar') {
+          return;
+        }
+        console.log(chalk.red("Você causou " + dano + " de dano!"));
         break;
       case 'consumirItem':
 

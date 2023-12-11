@@ -28,7 +28,7 @@ async function game(nomeUsuario, idPersonagemJogavel) {
   }
 }
 
-async function buscarDadosBiomaAtual(nomeUsuario, idPersonagemJogavel) {
+export async function buscarDadosBiomaAtual(nomeUsuario, idPersonagemJogavel) {
   const instanciaPc = await buscarInstancia(nomeUsuario, idPersonagemJogavel);
   const biomaMundo = await buscarBiomaMundo(instanciaPc.idmundo, instanciaPc.idbioma);
   const instanciasNpc = await buscarInstanciasNpc(instanciaPc.idmundo, instanciaPc.idbioma);
