@@ -2,13 +2,25 @@ import chalk from 'chalk';
 import inquirer from 'inquirer';
 import { menuAtaque } from './menus/menuAtaque.js';
 import { carregarDados } from './dadosSessao.js';
+import { atualizaDiaAtual } from './mundo/mundo.js';
 
 export async function exibirMenu() {
+  let tempo = 0;  // cada unidade em tempo equivale a 1/5 de 1 dia
   while (true) {
     let dadosSessao = await carregarDados();
-    console.log(chalk.yellow('╔════════════════════════════╗'));
-    console.log(chalk.yellow('║     Escolha uma opção      ║'));
-    console.log(chalk.yellow('╚════════════════════════════╝\n'));
+
+    if(tempo === 5) {
+      console.log(chalk.yellow('╔════════════════════════════╗'));
+      console.log(chalk.yellow('║  Um novo dia se inicia   ☀ ║'));
+      console.log(chalk.yellow('╚════════════════════════════╝\n'));
+      
+      await atualizaDiaAtual(dadosSessao.instanciaPc.idmundo);
+      tempo = 0;
+    } else {
+      console.log(chalk.yellow('╔════════════════════════════╗'));
+      console.log(chalk.yellow('║     Escolha uma ação       ║'));
+      console.log(chalk.yellow('╚════════════════════════════╝\n'));
+    }
 
     const menu = await inquirer.prompt([
       {
@@ -54,7 +66,7 @@ export async function exibirMenu() {
       default:
         console.log(chalk.red('Opção inválida'));
     }
-
+    tempo ++;
     //await new Promise(resolve => setTimeout(resolve, 1000));
   }
 }
